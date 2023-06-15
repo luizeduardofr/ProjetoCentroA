@@ -1,5 +1,5 @@
 <?php
-    
+
     class Conexao{
         private static $dbNome = 'centroa';
         private static $dbHost = 'localhost';
