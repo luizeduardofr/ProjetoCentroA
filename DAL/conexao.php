@@ -1,5 +1,7 @@
 <?php
 
+    namespace DAL;
+
     class Conexao{
         private static $dbNome = 'centroa';
         private static $dbHost = 'localhost';

@@ -1,9 +1,10 @@
 <?php
 
-include_once 'conexao.php';
-$sql = "select * from aluno;";
-$con = Conexao::conectar();
-$lstaluno = $con->query($sql);
+    include_once 'C:\xampp\htdocs\centroa\DAL\conexao.php';
+    use DAL\Conexao;
+    $sql = "select * from aluno;";
+    $con = Conexao::conectar();
+    $lstaluno = $con->query($sql);
 
 ?>
 
@@ -25,7 +26,7 @@ $lstaluno = $con->query($sql);
 <body>
     <h1>Listar Alunos</h1>
 
-    <table>
+    <table class="striped yellow accent-2">
         <tr>
             <th>ID</th>
             <th>NOME</th>
@@ -39,11 +40,11 @@ $lstaluno = $con->query($sql);
 
         ?>
             <tr>
-                <td><?php echo $aluno['id']; ?></td>
-                <td><?php echo $aluno['nome']; ?></td>
-                <td><?php echo $aluno['cpf']; ?></td>
-                <td><?php echo $aluno['nascimento']; ?></td>
-                <td><?php echo $aluno['endereco']; ?></td>
+                <td><?php echo $aluno->getId; ?></td>
+                <td><?php echo $aluno->getNome; ?></td>
+                <td><?php echo $aluno->getCpf; ?></td>
+                <td><?php echo $aluno->getNascimento; ?></td>
+                <td><?php echo $aluno->getEndereco; ?></td>
             </tr>
         <?php
         }
