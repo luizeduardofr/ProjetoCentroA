@@ -5,7 +5,6 @@
     $sql = "select * from aluno;";
     $con = Conexao::conectar();
     $lstaluno = $con->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -40,11 +39,11 @@
 
         ?>
             <tr>
-                <td><?php echo $aluno->getId; ?></td>
-                <td><?php echo $aluno->getNome; ?></td>
-                <td><?php echo $aluno->getCpf; ?></td>
-                <td><?php echo $aluno->getNascimento; ?></td>
-                <td><?php echo $aluno->getEndereco; ?></td>
+                <td><?php echo $aluno['id']; ?></td>
+                <td><?php echo $aluno['nome']; ?></td>
+                <td><?php echo $aluno['cpf']; ?></td>
+                <td><?php echo $aluno['nascimento']; ?></td>
+                <td><?php echo $aluno['endereco']; ?></td>
             </tr>
         <?php
         }

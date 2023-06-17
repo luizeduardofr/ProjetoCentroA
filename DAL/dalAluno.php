@@ -14,21 +14,12 @@
             $con = Conexao::desconectar();
 
             foreach ($result as $linha){
-                $aluno = new \MODEL\Aluno(); 
-  
-                $aluno->setId($linha['id']); 
-                $aluno->setNome($linha['nome']);
-                $aluno->setCpf($linha['cpf']);
-                
-                $data = date_create($linha['nascimento']);
-                $aluno->setNascimento(date_format($data, 'd-m-Y')); 
-  
-                $aluno->setEndereco($linha['endereco']);
+                $aluno = new \MODEL\Aluno($linha['id'], $linha['nome'], $linha['cpf'], date('d/m/Y',strtotime($linha['nascimento'])),  $linha['endereco']);
   
                 $lstaluno[] = $aluno; 
-            }
 
-            return $lstaluno;
+                return $lstaluno;
+            }
         }
 
         public function SelectID(int $id){
