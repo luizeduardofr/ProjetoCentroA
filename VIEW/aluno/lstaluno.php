@@ -29,7 +29,7 @@
         <tr>
             <th>ID</th>
             <th>NOME</th>
-            <th>CPF</th>
+            <th>cpf</th>
             <th>NASCIMENTO</th>
             <th>ENDERECO</th>
         </tr>
