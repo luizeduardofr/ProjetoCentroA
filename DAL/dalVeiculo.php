@@ -35,7 +35,7 @@
             return $veiculo;
         }
 
-        public function SelectNome(string $modelo){
+        public function SelectModelo(string $modelo){
             $sql = "select * from veiculo where modelo like '%" . $modelo . "%' order by modelo;";
 
             $pdo = Conexao::conectar();

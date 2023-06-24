@@ -1,7 +1,6 @@
 <?php
-
     namespace DAL;
-    include_once 'C:\xampp\htdocs\centroa\DAL\conexao.php';
+    include_once '../DAL/conexao.php';
     include_once '../DAL/dalCurso.php';
 
     class dalCurso{
