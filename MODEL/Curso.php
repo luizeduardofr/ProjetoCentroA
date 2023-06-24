@@ -6,11 +6,9 @@
         private ?string $letra;
         private ?float $valor;
 
-        public function __construct(?int $id, ?string $letra, ?float $valor)
+        public function __construct()
         {
-            $this->id = $id;
-            $this->letra = $letra;
-            $this->valor = $valor;
+
         }
 
         public function getId() 

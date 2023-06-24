@@ -8,13 +8,9 @@
         private ?string $nascimento;
         private ?string $endereco;
 
-        public function __construct(?int $id, ?string $nome, ?string $cpf, ?string $nascimento, ?string $endereco)
+        public function __construct()
         {
-            $this->id = $id;
-            $this->nome = $nome;
-            $this->cpf = $cpf;
-            $this->nascimento = $nascimento;
-            $this->endereco = $endereco;
+            
         }
 
         public function getId() 

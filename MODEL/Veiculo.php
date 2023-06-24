@@ -7,12 +7,9 @@
         private ?string $modelo;
         private ?string $placa;
 
-        public function __construct(?int $id, ?string $marca, ?string $modelo, ?string $placa)
+        public function __construct()
         {
-            $this->id = $id;
-            $this->marca = $marca;
-            $this->modelo = $modelo;
-            $this->placa = $placa;
+
         }
 
         public function getId() 

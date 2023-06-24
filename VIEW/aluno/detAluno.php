@@ -14,7 +14,7 @@ $aluno = $bll->SelectID($id);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes de Operador</title>
+    <title>Detalhes do Aluno</title>
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -27,9 +27,9 @@ $aluno = $bll->SelectID($id);
 </head>
 
 <body>
-    <?php include_once '../menu.php'; ?>
+    <?php include_once '../menu/menu.php'; ?>
     <div class="container blue lighten-5 black-text col s12">
-        <div class="center orange">
+        <div class="center">
             <h1>Detalhes do Aluno</h1>
         </div>
         <div class="row">
@@ -48,14 +48,21 @@ $aluno = $bll->SelectID($id);
                 </div>
 
                 <div class="input-field col s8">
-                    <label for="aniversario" class="black-text bold">
-                        <h5>Aniversário: <?php echo $aluno->getAniversario(); ?> </h5>
+                    <label for="cpf" class="black-text bold">
+                        <h5>CPF: <?php echo $aluno->getCpf(); ?> </h5>
                     </label>
                 </div>
 
                 <div class="input-field col s8">
-                    <label for="salario" class="black-text bold">
-                        <h5>Salário: <?php echo $aluno->getSalario(); ?> </h5>
+                    <label for="nascimento" class="black-text bold">
+                        <h5>Nascimento: <?php echo $aluno->getNascimento(); ?> </h5>
+                    </label>
+                    <br> <br><br>
+                </div>
+
+                <div class="input-field col s8">
+                    <label for="endereco" class="black-text bold">
+                        <h5>Endereço: <?php echo $aluno->getEndereco(); ?> </h5>
                     </label>
                     <br> <br><br>
                 </div>
@@ -70,7 +77,6 @@ $aluno = $bll->SelectID($id);
                 Editar <i class="material-icons">edit</i>
             </button>
             <button class="waves-effect waves-light btn red" type="button" onclick="JavasScript:remover(<?php echo $aluno->getId(); ?>);">
-
                 Remover <i class="material-icons">delete_forever</i>
             </button>
             <button class="waves-effect waves-light btn blue" type="button" onclick="JavaScript:location.href='lstaluno.php'">
