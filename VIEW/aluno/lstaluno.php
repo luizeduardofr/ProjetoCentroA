@@ -1,6 +1,6 @@
 <?php
 
-    include_once 'C:\xampp\htdocs\centroa\DAL\conexao.php';
+    include_once '../../DAL/conexao.php';
     use DAL\Conexao;
     $sql = "select * from aluno;";
     $con = Conexao::conectar();
@@ -29,7 +29,7 @@
         <tr>
             <th>ID</th>
             <th>NOME</th>
-            <th>cpf</th>
+            <th>CPF2</th>
             <th>NASCIMENTO</th>
             <th>ENDERECO</th>
         </tr>
