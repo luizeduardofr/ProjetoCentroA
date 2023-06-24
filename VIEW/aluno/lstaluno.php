@@ -29,7 +29,7 @@
         <tr>
             <th>ID</th>
             <th>NOME</th>
-            <th>CPF2</th>
+            <th>CPF</th>
             <th>NASCIMENTO</th>
             <th>ENDERECO</th>
         </tr>
@@ -39,11 +39,27 @@
 
         ?>
             <tr>
-                <td><?php echo $aluno['id']; ?></td>
-                <td><?php echo $aluno['nome']; ?></td>
-                <td><?php echo $aluno['cpf']; ?></td>
-                <td><?php echo $aluno['nascimento']; ?></td>
-                <td><?php echo $aluno['endereco']; ?></td>
+                <td><?php echo $aluno->getId() ?></td>
+                <td><?php echo $aluno->getNome(); ?></td>
+                <td><?php echo $aluno->getCpf(); ?></td>
+                <td><?php echo $aluno->getNascimento(); ?></td>
+                <td><?php echo $aluno->getEndereco(); ?></td>
+                <td>
+                    <a class="btn-floating btn-small waves-effect waves-light blue" onclick="JavaScript:location.href='detoperador.php?id=' +
+                                     <?php echo $aluno->getId(); ?>">
+                        <i class="material-icons">list</i>
+                    </a>
+
+                    <a class="btn-floating btn-small waves-effect waves-light orange" onclick="JavaScript:location.href='edtoAluno.php?id=' +
+                                    <?php echo $aluno->getId(); ?>">
+                        <i class="material-icons">edit</i>
+                    </a>
+
+                    <a class="btn-floating btn-small waves-effect waves-light red" 
+                               onclick="JavaScript: remover(<?php echo $aluno->getId(); ?>);">
+                        <i class="material-icons">delete_forever</i>
+                    </a>
+                </td>
             </tr>
         <?php
         }
@@ -51,5 +67,11 @@
 
     </table>
 </body>
-
 </html>
+<script>
+    function remover(id) {
+        if (confirm('Excluir o Aluno ' + id + '?')) {
+            location.href = 'remoAluno.php?id=' + id;
+        }
+    }
+</script>
