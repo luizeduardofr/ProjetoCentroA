@@ -6,19 +6,22 @@
     class dalCurso{
 
         public function Select(){
-            $sql = "select * from curso;";
-
             $con = Conexao::conectar();
+
+            $sql = "select * from curso;";
             $result = $con->query($sql);
             $con = Conexao::desconectar();
 
-            foreach ($result as $linha){
-                $curso = new \MODEL\Curso($linha['id'], $linha['letra'], $linha['valor']);
-  
-                $lstcurso[] = $curso; 
+            foreach($result as $linha){
+                 $curso = new \MODEL\Curso();
 
-                return $lstcurso;
+                 $curso->setId($linha['id']);
+                 $curso->setLetra($linha['letra']);
+                 $curso->setValor($linha['valor']);
+                 $lstcurso[]= $curso;
             }
+            return $lstcurso;
+            
         }
 
         public function SelectID(int $id){
