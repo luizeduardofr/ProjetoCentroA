@@ -1,10 +1,18 @@
 <?php
 
-    include_once '../../DAL/conexao.php';
-    use DAL\Conexao;
-    $sql = "select * from aluno;";
-    $con = Conexao::conectar();
-    $lstaluno = $con->query($sql);
+    use BLL\bllAluno;
+
+    include_once '../../BLL/bllAluno.php';
+
+    if (isset($_GET['busca']))
+        $busca = $_GET['busca'];
+    else $busca = null;
+
+    $bll = new \BLL\bllAluno();
+
+    if($busca == null)
+        $lstaluno = $bll->Select();
+    else $lstaluno = $bll->SelectNome($busca);
 ?>
 
 <!DOCTYPE html>
@@ -45,12 +53,12 @@
                 <td><?php echo $aluno->getNascimento(); ?></td>
                 <td><?php echo $aluno->getEndereco(); ?></td>
                 <td>
-                    <a class="btn-floating btn-small waves-effect waves-light blue" onclick="JavaScript:location.href='detoperador.php?id=' +
+                    <a class="btn-floating btn-small waves-effect waves-light blue" onclick="JavaScript:location.href='detAluno.php?id=' +
                                      <?php echo $aluno->getId(); ?>">
                         <i class="material-icons">list</i>
                     </a>
 
-                    <a class="btn-floating btn-small waves-effect waves-light orange" onclick="JavaScript:location.href='edtoAluno.php?id=' +
+                    <a class="btn-floating btn-small waves-effect waves-light orange" onclick="JavaScript:location.href='edtAluno.php?id=' +
                                     <?php echo $aluno->getId(); ?>">
                         <i class="material-icons">edit</i>
                     </a>
@@ -68,6 +76,7 @@
     </table>
 </body>
 </html>
+
 <script>
     function remover(id) {
         if (confirm('Excluir o Aluno ' + id + '?')) {
