@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Jun-2023 às 01:41
+-- Tempo de geração: 27-Jun-2023 às 01:20
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `centroa`
 --
-CREATE DATABASE IF NOT EXISTS `centroa` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci;
-USE `centroa`;
 
 -- --------------------------------------------------------
 
@@ -36,6 +34,15 @@ CREATE TABLE `aluno` (
   `nascimento` date NOT NULL,
   `endereco` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Extraindo dados da tabela `aluno`
+--
+
+INSERT INTO `aluno` (`id`, `nome`, `cpf`, `nascimento`, `endereco`) VALUES
+(1, 'Luiz Eduardo', '472924', '2000-05-14', 'Rua Guiacara'),
+(2, 'Pedro', '111111', '2003-09-02', 'Rua Guiacara'),
+(3, 'Eduardo', '222222', '1993-06-03', 'Rua Piracanjuba');
 
 -- --------------------------------------------------------
 
@@ -63,6 +70,13 @@ CREATE TABLE `curso` (
   `letra` char(5) NOT NULL,
   `valor` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Extraindo dados da tabela `curso`
+--
+
+INSERT INTO `curso` (`id`, `letra`, `valor`) VALUES
+(1, 'AB', 2000);
 
 -- --------------------------------------------------------
 
@@ -154,7 +168,7 @@ ALTER TABLE `veiculo`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `aula`
@@ -166,13 +180,13 @@ ALTER TABLE `aula`
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `instrutor`
 --
 ALTER TABLE `instrutor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
@@ -184,7 +198,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `veiculo`
 --
 ALTER TABLE `veiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas
@@ -197,12 +211,6 @@ ALTER TABLE `aula`
   ADD CONSTRAINT `aluno_aula` FOREIGN KEY (`aluno`) REFERENCES `aluno` (`id`),
   ADD CONSTRAINT `professor_aula` FOREIGN KEY (`professor`) REFERENCES `instrutor` (`id`),
   ADD CONSTRAINT `veiculo_aula` FOREIGN KEY (`veiculo`) REFERENCES `veiculo` (`id`);
-
---
--- Limitadores para a tabela `curso`
---
-ALTER TABLE `curso`
-  ADD CONSTRAINT `aluno_curso` FOREIGN KEY (`id`) REFERENCES `aluno` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

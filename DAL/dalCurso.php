@@ -26,7 +26,7 @@
         }
 
         public function Insert(){
-
+            
         }
 
         public function Update(){
