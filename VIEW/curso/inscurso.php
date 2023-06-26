@@ -22,13 +22,13 @@
         </div>
 
         <div class="row">
-            <form action="recinscurso.php" method="$_POST" id="frminscurso" class="col s12">
+            <form action="recinscurso.php" method="POST" id="frminscurso" class="col s12">
                 <div class="input-field col s7">
-                    <input id="letra" type="text" name="txt_letra">
+                    <input id="letra" type="text" name="txtletra">
                     <label for="letra" class="black-text bold">LETRA</label>
                 </div>
                 <div class="input-field col s7">
-                    <input id="valor" type="text" name="txt_valor">
+                    <input id="valor" type="text" name="txtvalor">
                     <label for="valor" class="black-text bold">VALOR</label>
                 </div>
 

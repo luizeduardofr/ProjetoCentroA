@@ -1,7 +1,7 @@
 <?php
     namespace DAL;
-    include_once '../DAL/conexao.php';
-    include_once '../DAL/dalCurso.php';
+    include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\conexao.php';
+    include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\dalCurso.php';
 
     class dalCurso{
 
