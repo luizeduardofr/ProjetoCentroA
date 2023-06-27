@@ -1,7 +1,7 @@
 <?php
     namespace BLL; 
-    use DAL\dalAluno; 
-    include_once '../DAL/dalVeiculo.php';
+    use DAL\dalVeiculo; 
+    include_once '../../DAL/dalVeiculo.php';
     
     class bllVeiculo {
 

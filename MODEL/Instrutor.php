@@ -47,6 +47,11 @@
             return $this->nascimento;
         }
 
+        public function getNascimentoF() 
+        {
+            return date('d/m/Y', strtotime($this->nascimento));
+        }
+
         public function setNascimento(string $nascimento) 
         {
             $this->nascimento = $nascimento;    

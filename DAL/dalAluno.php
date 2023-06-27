@@ -79,14 +79,17 @@
 
 
         public function Insert(\MODEL\Aluno $aluno){
-            $con = Conexao::conectar();
             $sql = "INSERT INTO aluno (nome, cpf, nascimento, endereco)
-                    VALUES ('{$aluno->getNome()}, '{$aluno->getCpf()}', '{$aluno->getNascimento()}',
-                            '{$aluno->getEndereco()}');";
-            
-            $result = $con->query($sql);
-            $con = Conexao::desconectar();
-            return $result;
+                    VALUES (:nome, :cpf, :nascimento, :endereco);";
+
+            $con = Conexao::conectar();  
+            $query = $con->prepare($sql);
+            $query->bindValue(':nome', $aluno->getNome(), \PDO::PARAM_STR);              
+            $query->bindValue(':cpf', $aluno->getCpf(), \PDO::PARAM_STR);  
+            $query->bindValue(':nascimento', $aluno->getNascimento(), \PDO::PARAM_STR);  
+            $query->bindValue(':endereco', $aluno->getEndereco(), \PDO::PARAM_STR);  
+            $query->execute();
+            Conexao::desconectar();
         }
 
         public function Update(\MODEL\Aluno $aluno){

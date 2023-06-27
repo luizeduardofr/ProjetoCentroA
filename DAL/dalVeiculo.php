@@ -4,23 +4,29 @@
     include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\conexao.php';
     include_once 'C:\xampp\htdocs\ProjetoCentroA\MODEL\Veiculo.php';
 
-    class dalVeiculo{
+    class dalVeiculo {
 
         public function Select(){
             $sql = "select * from veiculo;";
 
-            $con = Conexao::conectar();
-            $result = $con->query($sql);
-            $con = Conexao::desconectar();
+            $con = Conexao::conectar(); 
+            $result = $con->query($sql); 
+            Conexao::desconectar();
 
-            foreach ($result as $linha){
-                $veiculo = new \MODEL\Veiculo($linha['id'], $linha['marca'], $linha['modelo'], $linha['placa']);
-  
-                $lstveiculo[] = $veiculo; 
+            $lstVeiculo = []; 
 
-                return $lstveiculo;
-            }
+        foreach ($result as $linha){
+            $veiculo = new \MODEL\Veiculo();
+
+            $veiculo->setId($linha['id']);
+            $veiculo->setMarca($linha['marca']);
+            $veiculo->setModelo($linha['modelo']);
+            $veiculo->setPlaca($linha['placa']);
+            
+            $lstVeiculo[] = $veiculo;
         }
+        return $lstVeiculo;
+    }
 
         public function SelectID(int $id){
             $sql = "select * from veiculo where id=?;";
@@ -53,12 +59,16 @@
         }
 
         public function Insert(\MODEL\Veiculo $veiculo){
-            $con = Conexao::conectar();
             $sql = "INSERT INTO veiculo (marca, modelo, placa)
-                    VALUES ('{$veiculo->getMarca()}', '{$veiculo->getModelo()}', '{$veiculo->getPlaca()}');";
-            $result = $con->query($sql);
-            $con = Conexao::desconectar();
-            return $result;
+                    VALUES (:marca, :modelo, :placa);";
+
+            $con = Conexao::conectar();  
+            $query = $con->prepare($sql);
+            $query->bindValue(':marca', $veiculo->getMarca(), \PDO::PARAM_STR);              
+            $query->bindValue(':modelo', $veiculo->getModelo(), \PDO::PARAM_STR);  
+            $query->bindValue(':placa', $veiculo->getPlaca(), \PDO::PARAM_STR);  
+            $query->execute();
+            Conexao::desconectar();
         }
 
         public function Update(\MODEL\Veiculo $veiculo){
