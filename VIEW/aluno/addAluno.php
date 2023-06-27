@@ -1,64 +1,69 @@
 <?php
 
-include('../../BLL/protect.php');
+// include('../../BLL/protect.php');
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Aluno</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Bootstrap -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   <title>Cadastrar Aluno</title>
 </head>
+
 <body>
-    <?php include_once "../menu/menu.php"; ?>
-    <div class="container teal lighten-5 black-text col s12">
-        <div class="center orange">
-            <h1>Cadastrar Aluno</h1>
-        </div>
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
 
-        <div class="row">
-            <form action="recaddAluno.php" method="POST" id="frmaddAluno" class="col s12">
+   <div class="container">
+      <div class="text-center mb-4">
+         <h3>Cadastrar Aluno</h3>
+      </div>
 
-                <div class="input-field col s8">
-                    <input id="nome" type="text" name="txtNome">
-                    <label for="nome" class="black-text bold">Nome</label>
-                </div>
+      <div class="container d-flex justify-content-center">
+         <form action="recaddAluno.php" method="post" style="width:50vw; min-width:300px;">
+            <div class="row mb-3">
+               <div class="col">
+                  <label class="form-label">Nome:</label>
+                  <input type="text" class="form-control" name="txtNome" placeholder="Luiz">
+               </div>
 
-                <div class="input-field col s8">
-                    <input id="cpf" type="text" name="txtCpf">
-                    <label for="cpf" class="black-text bold">CPF</label>
-                </div>
+               <div class="col">
+                  <label class="form-label">CPF:</label>
+                  <input type="text" class="form-control" name="txtCpf" placeholder="111.111.111-11">
+               </div>
+            </div>
 
-                <div class="input-field col s8">
-                    <input id="nascimento" type="date" name="txtNascimento">
-                    <label for="nascimento" class="black-text bold">Nascimento</label>
-                </div>
+            <div class="mb-3">
+               <label class="form-label">Nascimento:</label>
+               <input type="email" class="form-control" name="txtNascimento" placeholder="dd/mm/YYYY">
+            </div>
 
-                <div class="input-field col s8">
-                    <input id="endereco" type="text" name="txtEndereco">
-                    <label for="endereco" class="black-text bold">Endereço</label>
-                </div>
-                <div class="brown lighten-3 center col s12">
-                    <br>
-                    <button class="waves-effect waves-light btn green" type="submit">
-                        Gravar <i class="material-icons">save</i>
-                    </button>
-                    <button class="waves-effect waves-light btn red" type="reset">
-                        Limpar <i class="material-icons">clear_all</i>
-                    </button>
-                    <button class="waves-effect waves-light btn blue" type="button" onclick="JavaScript:location.href='lstoperador2.php'">
-                        Voltar <i class="material-icons">arrow_back</i>
-                    </button>
-                    <br>
-                    <br>
-                </div>
+            <div class="mb-3">
+               <label class="form-label">Endereço:</label>
+               <input type="text" class="form-control" name="txtEndereco" placeholder="Rua">
+            </div>
 
+            <div style="text-align:right"> 
+               <button type="submit" class="btn btn-success" name="submit">Salvar</button>
+               <a href="index.php" class="btn btn-danger">Cancelar</a>
+            </div>
+         </form>
+      </div>
+   </div>
 
-            </form>
-        </div>
-    </div>
-    <?php include_once '../footer.php';?>
+   <!-- Bootstrap -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </body>
+
 </html>

@@ -5,10 +5,10 @@
     $aluno = new \MODEL\Aluno();
 
     $aluno->setId($_POST['txtID']);
-    $aluno->setNome($_POST['txtNome']);
-    $aluno->setCpf($_POST['txtCpf']);
-    $aluno->setNascimento($_POST['txtNascimento']);
-    $aluno->setEndereco($_POST['txtEndereco']);
+    $aluno->setNome($_POST['nome']);
+    $aluno->setCpf($_POST['cpf']);
+    $aluno->setNascimento($_POST['nascimento']);
+    $aluno->setEndereco($_POST['endereco']);
 
     $bll = new \BLL\bllAluno();
     $bll->Update($aluno);

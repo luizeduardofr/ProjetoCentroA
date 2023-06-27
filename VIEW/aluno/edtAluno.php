@@ -1,9 +1,10 @@
 <?php
-    include_once '../../BLL/bllAluno.php';
-    $id = $_GET['id'];
+include_once '../../BLL/bllAluno.php';
+// include('../../BLL/protect.php');
+$id = $_GET['id'];
 
-    $bll = new \BLL\bllAluno();
-    $aluno = $bll->SelectID($id);
+$bll = new \BLL\bllAluno();
+$aluno = $bll->SelectID($id);
 ?>
 
 <!DOCTYPE html>
@@ -11,71 +12,66 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Editar Aluno</title>
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
-    <?php include_once '..menu.php'; ?>
-    
-    <div class="container teal lighten-5 black-text col s12">
-        <div class="center orange">
-            <h1>Editar Aluno</h1>
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
+
+    <div class="container">
+        <div class="text-center mb-4">
+            <h3>Editar Aluno</h3>
         </div>
 
-        <div class="row">
-            <form action="recedtAluno.php" method="POST" id="frminsAluno" class="col s12">
-
-                <div class="input-field col s8">
-                    <label for="id" class="black-text bold">ID: <?php echo $aluno->getId(); ?></label>
-                    </br> </br>
+        <div class="container d-flex justify-content-center">
+            <form action="recedtAluno.php" method="post" style="width:50vw; min-width:300px;">
+                <div class="col">
                     <input type="hidden" name="txtID" value=<?php echo $id; ?>>
                 </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Nome:</label>
+                        <input type="text" class="form-control" name="nome" value="<?php echo $aluno->getNome(); ?>">
+                    </div>
 
-                <div class="input-field col s8">
-                    <input id="nome" type="text" name="txtNome" value="<?php echo $aluno->getNome() ?>">
-                    <label for="nome" class="black-text bold">Nome</label>
+                    <div class="col">
+                        <label class="form-label">CPF:</label>
+                        <input type="text" class="form-control" name="cpf" value="<?php echo $aluno->getCpf(); ?>">
+                    </div>
                 </div>
 
-                <div class="input-field col s8">
-                    <input id="cpf" type="text" name="txtCpf" value="<?php echo $aluno->getCpf() ?>">
-                    <label for="cpf" class="black-text bold">CPF</label>
+                <div class="mb-3">
+                    <label class="form-label">Nascimento:</label>
+                    <input type="date" class="form-control" name="nascimento" value="<?php echo $aluno->getNascimento(); ?>">
                 </div>
 
-                <div class="input-field col s8">
-                    <input id="nascimento" type="date" name="txtNascimento" value="<?php echo $aluno->getNascimento() ?>">
-                    <label for="nascimento" class="black-text bold">Nascimento</label>
+                <div class="mb-3">
+                    <label class="form-label">Endereço:</label>
+                    <input type="text" class="form-control" name="endereco" value="<?php echo $aluno->getEndereco(); ?>">
                 </div>
 
-                <div class="input-field col s8">
-                    <input id="endereco" type="text" name="txtEndereco" value="<?php echo $aluno->getEndereco() ?>">
-                    <label for="endereco" class="black-text bold">Endereço</label>
-                </div>
-
-                <div class="brown lighten-3 center col s12">
-                    <br>
-                    <button class="waves-effect waves-light btn green" type="submit">
-                        Gravar <i class="material-icons">save</i>
-                    </button>
-                    <button class="waves-effect waves-light btn red" type="reset">
-                        Limpar <i class="material-icons">clear_all</i>
-                    </button>
-                    <button class="waves-effect waves-light btn blue" type="button" onclick="JavaScript:location.href='lstoperador2.php'">
-                        Voltar <i class="material-icons">arrow_back</i>
-                    </button>
-                    <br>
-                    <br>
+                <div style="text-align:right">
+                    <button type="submit" class="btn btn-success" name="submit">Atualizar</button>
+                    <a href="index.php" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
 
-    <?php include_once '../footer.php'; ?>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </body>
+
+<?php include_once '../../VIEW/validacao/footer.php'; ?>
+
 </html>
