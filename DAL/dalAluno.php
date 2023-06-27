@@ -8,8 +8,8 @@
         public function Select(){
             $sql = "select * from aluno;";
 
-            $conn = Conexao::conectar(); 
-            $result = $conn->query($sql); 
+            $con = Conexao::conectar(); 
+            $result = $con->query($sql); 
             Conexao::desconectar();
 
             $lstAluno = []; 
@@ -29,14 +29,25 @@
     }
 
         public function SelectID(int $id){
-            $sql = "select * from aluno where id=?;";
+            $sql = "select * from aluno where id= :id;";
+            
             $pdo = Conexao::conectar();
             $query = $pdo->prepare($sql);
-            $query->execute (array($id));
+            $query->bindValue(':id', $id, \PDO::PARAM_INT);
+            $query->execute ();
             $linha = $query->fetch(\PDO::FETCH_ASSOC);
             Conexao::desconectar();
 
-            $aluno = new \MODEL\Aluno($linha['id'], $linha['nome'], $linha['cpf'], date('d/m/Y',strtotime($linha['nascimento'])),  $linha['endereco']);
+            if(!$linha){
+                return null;
+            }
+            $aluno = new \MODEL\Aluno();
+
+            $aluno->setId($linha['id']);
+            $aluno->setNome($linha['nome']);
+            $aluno->setCpf($linha['cpf']);
+            $aluno->setNascimento($linha['nascimento']);
+            $aluno->setEndereco($linha['endereco']);
 
             return $aluno;
         }
@@ -46,16 +57,24 @@
 
             $pdo = Conexao::conectar();
             $query = $pdo->prepare($sql);
-            $result = $pdo->query($sql);
+            $query->bindValue(':nome', '%' . $nome . '%', \PDO::PARAM_STR);
+            $query->execute();
+            $result = $query->fetchAll(\PDO::FETCH_ASSOC);
 
-            $lstAluno = NULL;
+            $lstAluno = [];
             foreach($result as $linha){
-                $aluno = new \MODEL\Aluno($linha['id'], $linha['nome'], $linha['cpf'], date('d/m/Y',strtotime($linha['nascimento'])),  $linha['endereco']);
+                $aluno = new \MODEL\Aluno();
+
+                $aluno->setId($linha['id']);
+                $aluno->setNome($linha['nome']);
+                $aluno->setCpf($linha['cpf']);
+                $aluno->setNascimento($linha['nascimento']);
+                $aluno->setEndereco($linha['endereco']);
 
                 $lstaluno[] = $aluno;
     
-                return $aluno;
             }
+                return $lstaluno;
         }
 
 
