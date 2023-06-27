@@ -1,8 +1,8 @@
 <?php
 
     namespace DAL;
-    include_once 'C:\xampp\htdocs\centroa\DAL\conexao.php';
-    include_once 'C:\xampp\htdocs\centroa\MODEL\Instrutor.php';
+    include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\conexao.php';
+    include_once 'C:\xampp\htdocs\ProjetoCentroA\MODEL\Instrutor.php';
 
     class dalInstrutor{
 

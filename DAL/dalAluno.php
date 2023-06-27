@@ -1,26 +1,32 @@
 <?php
-
     namespace DAL;
-    include_once 'C:\xampp\htdocs\centroa\DAL\conexao.php';
-    include_once 'C:\xampp\htdocs\centroa\MODEL\Aluno.php';
+    include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\conexao.php';
+    include_once 'C:\xampp\htdocs\ProjetoCentroA\MODEL\Aluno.php';
 
     class dalAluno{
 
         public function Select(){
             $sql = "select * from aluno;";
 
-            $con = Conexao::conectar();
-            $result = $con->query($sql);
-            $con = Conexao::desconectar();
+            $conn = Conexao::conectar(); 
+            $result = $conn->query($sql); 
+            Conexao::desconectar();
 
-            foreach ($result as $linha){
-                $aluno = new \MODEL\Aluno($linha['id'], $linha['nome'], $linha['cpf'], date('d/m/Y',strtotime($linha['nascimento'])),  $linha['endereco']);
-  
-                $lstaluno[] = $aluno; 
+            $lstAluno = []; 
 
-                return $lstaluno;
-            }
+        foreach ($result as $linha){
+            $aluno = new \MODEL\Aluno();
+
+            $aluno->setId($linha['id']);
+            $aluno->setNome($linha['nome']);
+            $aluno->setCpf($linha['cpf']);
+            $aluno->setNascimento($linha['nascimento']);
+            $aluno->setEndereco($linha['endereco']);
+            
+            $lstAluno[] = $aluno;
         }
+        return $lstAluno;
+    }
 
         public function SelectID(int $id){
             $sql = "select * from aluno where id=?;";
@@ -76,15 +82,14 @@
             return $result;
         }
 
-        public function Delete(int $id){
-            $sql = "DELETE from aluno WHERE id=?";
-
-            $pdo = Conexao::conectar();
-            $pdo->setAttibute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            $query = $pdo->prepare($sql);
-            $result = $query->execute(array($id));
-            $con = Conexao::desconectar();
-            return $result;
+        public function Delete(int $id) {
+            $sql = "DELETE FROM aluno WHERE id = :id;";
+        
+            $conn = Conexao::conectar();
+            $query = $conn->prepare($sql);
+            $query->bindValue(':id', $id, \PDO::PARAM_INT);
+            $query->execute();
+            Conexao::desconectar();
         }
     }
 ?>
