@@ -18,9 +18,10 @@
         }
 
         public function Insert (\MODEL\Curso $curso){
-           $dal = new \DAL\dalCurso(); 
+           $dal = new \DAL\dalCurso();
 
-           $dal->Insert($curso); 
+           $dal->Insert($curso);
+           
         }
 
         public function Update (\MODEL\Curso $curso){
