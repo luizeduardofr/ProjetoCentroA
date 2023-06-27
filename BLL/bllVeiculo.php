@@ -17,10 +17,10 @@
             return $dal->SelectID($id);
         }
 
-        public function SelectModelo (string $modelo){
+        public function SelectMarca (string $marca){
             $dal = new  \Dal\dalVeiculo(); 
            
-            return $dal->SelectModelo($modelo);
+            return $dal->SelectMarca($marca);
         }
 
         public function Insert (\MODEL\Veiculo $veiculo){

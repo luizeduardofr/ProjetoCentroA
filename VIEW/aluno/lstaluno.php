@@ -1,18 +1,18 @@
 <?php
 
-    use BLL\bllAluno;
+use BLL\bllAluno;
 
-    include_once '../../BLL/bllAluno.php';
+include_once '../../BLL/bllAluno.php';
 
-    if (isset($_GET['busca']))
-        $busca = $_GET['busca'];
-    else $busca = null;
+if (isset($_GET['busca']))
+  $busca = $_GET['busca'];
+else $busca = null;
 
-    $bll = new \BLL\bllAluno();
+$bll = new \BLL\bllAluno();
 
-    if($busca == null)
-        $lstaluno = $bll->Select();
-    else $lstaluno = $bll->SelectNome($busca);
+if ($busca == null)
+  $lstaluno = $bll->Select();
+else $lstaluno = $bll->SelectNome($busca);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../view/css/formatacao.css">
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -36,9 +37,19 @@
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
 
   <div class="container">
-        <div class="text-center mb-4">
-            <h3>Listar Aluno</h3>
+    <div class="text-center mb-4">
+      <h3>Listar Aluno</h3>
+    </div>
+    <div class="card-search">
+      <form action="../aluno/lstAluno.php" method="GET" id="" class="">
+        <h5>Pesquisa de Alunos</h5>
+        <div class="teste">
+          <input type="text" class="input-pesquisa" id="txtBusca" name="busca">
+          <button type="submit" class="btn btn-primary float-end"><span>Pesquisar</span></button>
         </div>
+      </form>
+    </div>
+    <br>
     <table class="table table-hover text-center">
       <thead class="table-dark">
         <tr>
@@ -52,9 +63,9 @@
       </thead>
       <tbody>
         <?php
-            foreach ($lstaluno as $aluno){
+        foreach ($lstaluno as $aluno) {
 
-            
+
         ?>
           <tr>
             <td><?php echo $aluno->getId(); ?></td>
@@ -85,9 +96,9 @@
 </html>
 
 <script>
-    function remover(id) {
-        if (confirm('Excluir o Aluno ' + id + '?')) {
-            location.href = 'remoAluno.php?id=' + id;
-        }
+  function remover(id) {
+    if (confirm('Excluir o Aluno ' + id + '?')) {
+      location.href = 'remoAluno.php?id=' + id;
     }
+  }
 </script>
