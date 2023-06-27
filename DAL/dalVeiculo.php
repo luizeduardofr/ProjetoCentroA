@@ -28,34 +28,51 @@
         return $lstVeiculo;
     }
 
-        public function SelectID(int $id){
-            $sql = "select * from veiculo where id=?;";
-            $pdo = Conexao::conectar();
-            $query = $pdo->prepare($sql);
-            $query->execute (array($id));
-            $linha = $query->fetch(\PDO::FETCH_ASSOC);
-            Conexao::desconectar();
+    public function SelectID(int $id){
+        $sql = "select * from veiculo where id= :id;";
+        
+        $con = Conexao::conectar();
+        $query = $con->prepare($sql);
+        $query->bindValue(':id', $id, \PDO::PARAM_INT);
+        $query->execute();
+        $linha = $query->fetch(\PDO::FETCH_ASSOC);
+        Conexao::desconectar();
 
-            $veiculo = new \MODEL\Veiculo($linha['id'], $linha['marca'], $linha['modelo'], $linha['placa']);
-
-            return $veiculo;
+        if(!$linha){
+            return null;
         }
 
-        public function SelectModelo(string $modelo){
-            $sql = "select * from veiculo where modelo like '%" . $modelo . "%' order by modelo;";
+        $veiculo = new \MODEL\Veiculo();
+        $veiculo->setId($linha['id']);
+        $veiculo->setMarca($linha['marca']);
+        $veiculo->setModelo($linha['modelo']);
+        $veiculo->setPlaca($linha['placa']);
 
-            $pdo = Conexao::conectar();
-            $query = $pdo->prepare($sql);
-            $result = $pdo->query($sql);
+        return $veiculo;
+    }
 
-            $lstveiculo = NULL;
+        public function SelectMarca(string $marca){
+            $sql = "SELECT * FROM veiculo WHERE marca LIKE :marca ORDER BY modelo;";
+
+            $con = Conexao::conectar();
+            $query = $con->prepare($sql);
+            $query->bindValue(':marca', '%' . $marca . '%', \PDO::PARAM_STR);
+            $query->execute();
+            $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+            Conexao::desconectar();
+
+            $lstVeiculo = [];
             foreach($result as $linha){
-                $veiculo = new \MODEL\Instrutor($linha['id'], $linha['marca'], $linha['modelo'], $linha['placa']);
+                $veiculo = new \MODEL\Veiculo();
+                $veiculo->setId($linha['id']);
+                $veiculo->setMarca($linha['marca']);
+                $veiculo->setModelo($linha['modelo']);
+                $veiculo->setPlaca($linha['placa']);
 
-                $lstveiculo[] = $veiculo;
-    
-                return $veiculo;
+                $lstVeiculo[] = $veiculo;
             }
+            
+            return $lstVeiculo;
         }
 
         public function Insert(\MODEL\Veiculo $veiculo){

@@ -1,18 +1,18 @@
 <?php
 
-    use BLL\bllVeiculo;
+use BLL\bllVeiculo;
 
-    include_once '../../BLL/bllVeiculo.php';
+include_once '../../BLL/bllVeiculo.php';
 
-    if (isset($_GET['busca']))
-        $busca = $_GET['busca'];
-    else $busca = null;
+if (isset($_GET['busca']))
+  $busca = $_GET['busca'];
+else $busca = null;
 
-    $bll = new \BLL\bllVeiculo();
+$bll = new \BLL\bllVeiculo();
 
-    if($busca == null)
-        $lstveiculo = $bll->Select();
-    else $lstveiculo = $bll->SelectModelo($busca);
+if ($busca == null)
+  $lstveiculo = $bll->Select();
+else $lstveiculo = $bll->SelectMarca($busca);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../view/css/formatacao.css">
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -36,9 +37,19 @@
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
 
   <div class="container">
-        <div class="text-center mb-4">
-            <h3>Listar Veículos</h3>
+    <div class="text-center mb-4">
+      <h3>Listar Veículos</h3>
+    </div>
+    <div class="card-search">
+      <form action="../veiculo/lstveiculo.php" method="GET" id="" class="">
+        <h5>Pesquisa de Veículos</h5>
+        <div class="teste">
+          <input type="text" class="input-pesquisa" id="txtBusca" name="busca">
+          <button type="submit" class="btn btn-primary float-end"><span>Pesquisar</span></button>
         </div>
+      </form>
+    </div>
+    <br>
     <table class="table table-hover text-center">
       <thead class="table-dark">
         <tr>
@@ -51,9 +62,9 @@
       </thead>
       <tbody>
         <?php
-            foreach ($lstveiculo as $veiculo){
+        foreach ($lstveiculo as $veiculo) {
 
-            
+
         ?>
           <tr>
             <td><?php echo $veiculo->getId(); ?></td>
@@ -83,9 +94,9 @@
 </html>
 
 <script>
-    function remover(id) {
-        if (confirm('Excluir o Veículo ' + id + '?')) {
-            location.href = 'remoVeiculo.php?id=' + id;
-        }
+  function remover(id) {
+    if (confirm('Excluir o Veículo ' + id + '?')) {
+      location.href = 'remoVeiculo.php?id=' + id;
     }
+  }
 </script>

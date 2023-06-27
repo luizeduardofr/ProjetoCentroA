@@ -31,18 +31,18 @@
         public function SelectID(int $id){
             $sql = "select * from aluno where id= :id;";
             
-            $pdo = Conexao::conectar();
-            $query = $pdo->prepare($sql);
+            $con = Conexao::conectar();
+            $query = $con->prepare($sql);
             $query->bindValue(':id', $id, \PDO::PARAM_INT);
-            $query->execute ();
+            $query->execute();
             $linha = $query->fetch(\PDO::FETCH_ASSOC);
             Conexao::desconectar();
 
             if(!$linha){
                 return null;
             }
-            $aluno = new \MODEL\Aluno();
 
+            $aluno = new \MODEL\Aluno();
             $aluno->setId($linha['id']);
             $aluno->setNome($linha['nome']);
             $aluno->setCpf($linha['cpf']);
@@ -53,13 +53,14 @@
         }
 
         public function SelectNome(string $nome){
-            $sql = "select * from aluno where nome like '%" . $nome . "%' order by nome;";
+            $sql = "select * from aluno WHERE nome LIKE :nome ORDER BY nome;";
 
-            $pdo = Conexao::conectar();
-            $query = $pdo->prepare($sql);
+            $con = Conexao::conectar();
+            $query = $con->prepare($sql);
             $query->bindValue(':nome', '%' . $nome . '%', \PDO::PARAM_STR);
             $query->execute();
             $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+            Conexao::desconectar();
 
             $lstAluno = [];
             foreach($result as $linha){
@@ -71,10 +72,10 @@
                 $aluno->setNascimento($linha['nascimento']);
                 $aluno->setEndereco($linha['endereco']);
 
-                $lstaluno[] = $aluno;
+                $lstAluno[] = $aluno;
     
             }
-                return $lstaluno;
+                return $lstAluno;
         }
 
 

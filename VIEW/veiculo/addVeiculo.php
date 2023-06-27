@@ -45,7 +45,7 @@
 
             <div class="mb-3">
                <label class="form-label">Placa:</label>
-               <input type="date" class="form-control" name="txtPlaca" placeholder="EX3MPL0">
+               <input type="text" class="form-control" name="txtPlaca" placeholder="EX3MPL0">
             </div>
 
             <div style="text-align:right"> 
