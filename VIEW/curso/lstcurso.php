@@ -32,11 +32,11 @@ $lstcurso = $bll->Select();
     <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
 
     <div class="container">
-      
+
         <div class="text-center mb-4">
             <h3>Listar Curso</h3>
         </div>
-  
+
         <table class="table table-hover text-center">
             <thead class="table-dark">
                 <tr>
@@ -59,7 +59,7 @@ $lstcurso = $bll->Select();
                             <td><?php echo $curso->getLetra() ?></td>
                             <td><?php echo $curso->getValor(); ?></td>
                             <td>
-                                <i class="material-icons">add</i>
+                                <a href="#" onclick="JavaScript:location.href='inscurso.php?id=' + <?php echo $curso->getId(); ?>"><i class="material-icons">add</i></a>
                                 <a href="#" onclick="JavaScript:location.href='edtcurso.php?id=' + <?php echo $curso->getId(); ?>"><i class="material-icons">create</i></a>
                                 <a href="#" onclick="JavasScript:remover(<?php echo $curso->getId(); ?>);"><i class="material-icons">delete</i></a>
                             </td>
