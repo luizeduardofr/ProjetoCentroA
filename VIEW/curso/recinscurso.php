@@ -3,8 +3,8 @@ include_once '../../MODEL/Curso.php';
 include_once '../../BLL/bllCurso.php';
 $curso = new \MODEL\Curso();
 
-$curso->setLetra($_POST['txtletra']);
-$curso->setValor($_POST['txtvalor']);
+$curso->setLetra($_POST['txtLetra']);
+$curso->setValor($_POST['txtValor']);
 
 $bll = new \BLL\bllCurso();
 
