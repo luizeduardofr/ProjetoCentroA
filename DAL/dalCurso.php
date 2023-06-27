@@ -4,6 +4,8 @@ namespace DAL;
 
 include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\conexao.php';
 include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\dalCurso.php';
+include_once 'C:\xampp\htdocs\ProjetoCentroA\MODEL\Curso.php';
+
 
 class dalCurso
 {
