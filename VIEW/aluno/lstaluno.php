@@ -33,10 +33,12 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Listar Alunos</nav>
+  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
 
   <div class="container">
-
+        <div class="text-center mb-4">
+            <h3>Listar Aluno</h3>
+        </div>
     <table class="table table-hover text-center">
       <thead class="table-dark">
         <tr>
@@ -58,7 +60,7 @@
             <td><?php echo $aluno->getId(); ?></td>
             <td><?php echo $aluno->getNome(); ?></td>
             <td><?php echo $aluno->getCpf(); ?></td>
-            <td><?php echo $aluno->getNascimento(); ?></td>
+            <td><?php echo $aluno->getNascimentoF(); ?></td>
             <td><?php echo $aluno->getEndereco(); ?></td>
             <td>
               <a onclick="JavaScript:location.href='addAluno.php?id='+(<?php echo $aluno->getId(); ?>)" class="link-dark"><i class="fa-solid fa-plus fs-5 me-3"></i></a>
