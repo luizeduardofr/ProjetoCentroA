@@ -1,44 +1,52 @@
 <?php
-    namespace DAL;
-    include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\conexao.php';
-    include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\dalCurso.php';
 
-    class dalCurso{
+namespace DAL;
 
-        public function Select(){
-            $con = Conexao::conectar();
+include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\conexao.php';
+include_once 'C:\xampp\htdocs\ProjetoCentroA\DAL\dalCurso.php';
 
-            $sql = "select * from curso;";
-            $result = $con->query($sql);
-            $con = Conexao::desconectar();
+class dalCurso
+{
 
-            foreach($result as $linha){
-                 $curso = new \MODEL\Curso();
+    public function Select()
+    {
+        $con = Conexao::conectar();
 
-                 $curso->setId($linha['id']);
-                 $curso->setLetra($linha['letra']);
-                 $curso->setValor($linha['valor']);
-                 $lstcurso[]= $curso;
-            }
-            return $lstcurso;
-            
+        $sql = "select * from curso;";
+        $result = $con->query($sql);
+        $con = Conexao::desconectar();
+
+        foreach ($result as $linha) {
+            $curso = new \MODEL\Curso();
+
+            $curso->setId($linha['id']);
+            $curso->setLetra($linha['letra']);
+            $curso->setValor($linha['valor']);
+            $lstcurso[] = $curso;
         }
-
-        public function SelectID(int $id){
-
-        }
-
-        public function Insert(){
-            
-        }
-
-        public function Update(){
-            
-        }
-
-        public function Delete(){
-            
-        }
+        return $lstcurso;
     }
 
-?>
+    public function SelectID(int $id)
+    {
+    }
+
+    public function Insert(\MODEL\Curso $curso)
+    {
+        $con = Conexao::conectar(); 
+        $sql = "INSERT INTO curso (letra, valor) 
+               VALUES ('{$curso->getLetra()}', '{$curso->getValor()}');";
+    
+        $result = $con->query($sql); 
+        $con = Conexao::desconectar();
+        return $result; 
+    }
+
+    public function Update()
+    {
+    }
+
+    public function Delete()
+    {
+    }
+}
