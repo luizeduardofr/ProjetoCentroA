@@ -12,7 +12,7 @@
         }
 
         public function SelectID (int $id){
-            $dal = new  \Dal\dalCurso(); 
+            $dal = new  \DAL\dalCurso(); 
            
             return $dal->SelectID($id);
         }

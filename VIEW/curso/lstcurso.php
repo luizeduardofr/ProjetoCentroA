@@ -29,40 +29,56 @@ $lstcurso = $bll->Select();
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Listar Cursos</nav>
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
 
-    <table class="table table-hover text-center">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Letra</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($lstcurso as $curso) {
-
-
-            ?>
+    <div class="container">
+      
+        <div class="text-center mb-4">
+            <h3>Listar Curso</h3>
+        </div>
+  
+        <table class="table table-hover text-center">
+            <thead class="table-dark">
                 <tr>
-                    <td><?php echo $curso->getId() ?></td>
-                    <td><?php echo $curso->getLetra() ?></td>
-                    <td><?php echo $curso->getValor(); ?></td>
-                    <td>
-                        <i class="material-icons">add</i>
-                        <i class="material-icons">create</i>
-                            <a href="#"  onclick="JavaScript:location.href='deletecurso.php?id=' + <?php echo $curso->getId(); ?>"><i class="material-icons">delete</i></a>
-                       </td>
-                    
+                    <th scope="col">ID</th>
+                    <th scope="col">Letra</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Ações</th>
                 </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php
+                if (isset($lstcurso)) {
+
+                    foreach ($lstcurso as $curso) {
+
+
+                ?>
+                        <tr>
+                            <td><?php echo $curso->getId() ?></td>
+                            <td><?php echo $curso->getLetra() ?></td>
+                            <td><?php echo $curso->getValor(); ?></td>
+                            <td>
+                                <i class="material-icons">add</i>
+                                <a href="#" onclick="JavaScript:location.href='edtcurso.php?id=' + <?php echo $curso->getId(); ?>"><i class="material-icons">create</i></a>
+                                <a href="#" onclick="JavasScript:remover(<?php echo $curso->getId(); ?>);"><i class="material-icons">delete</i></a>
+                            </td>
+
+                        </tr>
+                <?php
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
+    <script type="text/javascript">
+        function remover(id) {
+            if (confirm('Excluir o Curso ' + id + '?')) {
+                location.href = 'detcurso.php?id=' + id;
+            }
+        }
+    </script>
 
 </body>
 
