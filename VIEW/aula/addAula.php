@@ -5,7 +5,8 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../../view/css/formatacao.css">
+   <link rel="stylesheet" href="../../VIEW/css/formatacao.css">
+   <link rel="stylesheet" href="../../VIEW/css/footer.css">
 
    <!-- Bootstrap -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -32,23 +33,24 @@
                   <label class="form-label">Data:</label>
                   <input type="datetime-local" class="form-control" name="txtData" placeholder="">
                </div>
+
                <div class="form-floating">
-                  <?php 
-                    include "../components/select.php";
-                    echo instrutor();
-                    echo veiculo();
-                    echo aluno();
+                  <?php
+                  include "../components/select.php";
+                  echo instrutor();
+                  echo veiculo();
+                  echo aluno();
                   ?>
                </div>
-            <div style="text-align:right">
-               <br>
-               <button type="submit" class="btn btn-success" name="submit">Salvar</button>
-               <a href="../../VIEW/aula/lstaula.php" class="btn btn-danger">Cancelar</a>
-            </div>
+               <div style="text-align:right">
+                  <br>
+                  <button type="submit" class="btn btn-success" name="submit">Salvar</button>
+                  <a href="../../VIEW/aula/lstaula.php" class="btn btn-danger">Cancelar</a>
+               </div>
          </form>
       </div>
    </div>
-
+   </div>
    <!-- Bootstrap -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
