@@ -41,74 +41,74 @@
         return $lstAulas;
     }
 
-    public function SelectID(int $id){
-        $sql = "SELECT * FROM aula WHERE id = :id;";
+    // public function SelectID(int $id){
+    //     $sql = "SELECT * FROM aula WHERE id = :id;";
         
-        $con = Conexao::conectar();
-        $query = $con->prepare($sql);
-        $query->bindValue(':id', $id, \PDO::PARAM_INT);
-        $query->execute();
-        $linha = $query->fetch(\PDO::FETCH_ASSOC);
-        Conexao::desconectar();
+    //     $con = Conexao::conectar();
+    //     $query = $con->prepare($sql);
+    //     $query->bindValue(':id', $id, \PDO::PARAM_INT);
+    //     $query->execute();
+    //     $linha = $query->fetch(\PDO::FETCH_ASSOC);
+    //     Conexao::desconectar();
     
-        if (!$linha) {
-            return null;
-        }
+    //     if (!$linha) {
+    //         return null;
+    //     }
     
-        $aula = new \MODEL\Aula();
-        $aula->setId($linha['id']);
+    //     $aula = new \MODEL\Aula();
+    //     $aula->setId($linha['id']);
     
-        $bllInstrutor = new \BLL\bllInstrutor();
-        $instrutor = $bllInstrutor->SelectID($linha['id_instrutor']);
-        $aula->setInstrutor($instrutor);
+    //     $bllInstrutor = new \BLL\bllInstrutor();
+    //     $instrutor = $bllInstrutor->SelectID($linha['id_instrutor']);
+    //     $aula->setInstrutor($instrutor);
     
-        $bllAluno = new \BLL\bllAluno();
-        $aluno = $bllAluno->SelectID($linha['id_aluno']);
-        $aula->setAluno($aluno);
+    //     $bllAluno = new \BLL\bllAluno();
+    //     $aluno = $bllAluno->SelectID($linha['id_aluno']);
+    //     $aula->setAluno($aluno);
     
-        $bllVeiculo = new \BLL\bllVeiculo();
-        $veiculo = $bllVeiculo->SelectID($linha['id_veiculo']); 
-        $aula->setVeiculo($veiculo);
+    //     $bllVeiculo = new \BLL\bllVeiculo();
+    //     $veiculo = $bllVeiculo->SelectID($linha['id_veiculo']); 
+    //     $aula->setVeiculo($veiculo);
     
-        $aula->setData($linha['data']);
+    //     $aula->setData($linha['data']);
     
-        return $aula;
-    }
+    //     return $aula;
+    // }
     
-    public function SelectNome(string $nome){
-        $sql = "SELECT * FROM aula WHERE nome LIKE :nome ORDER BY nome;";
+    // public function SelectNome(string $nome){
+    //     $sql = "SELECT * FROM aluno WHERE nome LIKE :nome ORDER BY nome;";
     
-        $con = Conexao::conectar();
-        $query = $con->prepare($sql);
-        $query->bindValue(':nome', '%' . $nome . '%', \PDO::PARAM_STR);
-        $query->execute();
-        $result = $query->fetchAll(\PDO::FETCH_ASSOC);
-        Conexao::desconectar();
+    //     $con = Conexao::conectar();
+    //     $query = $con->prepare($sql);
+    //     $query->bindValue(':nome', '%' . $nome . '%', \PDO::PARAM_STR);
+    //     $query->execute();
+    //     $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+    //     Conexao::desconectar();
     
-        $lstAulas = [];
-        foreach ($result as $linha) {
-            $aula = new \MODEL\Aula();
-            $aula->setId($linha['id']);
+    //     $lstAulas = [];
+    //     foreach ($result as $linha) {
+    //         $aula = new \MODEL\Aula();
+    //         $aula->setId($linha['id']);
     
-            $bllInstrutor = new \BLL\bllInstrutor();
-            $instrutor = $bllInstrutor->SelectID($linha['id_instrutor']);
-            $aula->setInstrutor($instrutor);
+    //         $bllInstrutor = new \BLL\bllInstrutor();
+    //         $instrutor = $bllInstrutor->SelectID($linha['id_instrutor']);
+    //         $aula->setInstrutor($instrutor);
     
-            $bllAluno = new \BLL\bllAluno();
-            $aluno = $bllAluno->SelectID($linha['id_aluno']);
-            $aula->setAluno($aluno);
+    //         $bllAluno = new \BLL\bllAluno();
+    //         $aluno = $bllAluno->SelectID($linha['id_aluno']);
+    //         $aula->setAluno($aluno);
     
-            $bllVeiculo = new \BLL\bllVeiculo();
-            $veiculo = $bllVeiculo->SelectID($linha['id_veiculo']); 
-            $aula->setVeiculo($veiculo);
+    //         $bllVeiculo = new \BLL\bllVeiculo();
+    //         $veiculo = $bllVeiculo->SelectID($linha['id_veiculo']); 
+    //         $aula->setVeiculo($veiculo);
     
-            $aula->setData($linha['data']);
+    //         $aula->setData($linha['data']);
     
-            $lstAulas[] = $aula;
-        }
+    //         $lstAulas[] = $aula;
+    //     }
     
-        return $lstAulas;
-    }
+    //     return $lstAulas;
+    // }
     
         public function Insert(\MODEL\Aula $aula){
             $sql = "INSERT INTO aula (data, id_instrutor, id_aluno, id_veiculo)

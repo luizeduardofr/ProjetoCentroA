@@ -14,6 +14,20 @@
             return $dal->Select();
         }
 
+        // public function SelectID(int $id)
+        // {
+        //     $dal = new  \Dal\dalAula();
+
+        //     return $dal->SelectID($id);
+        // }
+
+        // public function SelectNome(string $nome)
+        // {
+        //     $dal = new  \Dal\dalAula();
+
+        //     return $dal->SelectNome($nome);
+        // }
+
         public function Insert(\MODEL\Aula $aula)
         {
             $dal = new \DAL\dalAula();
