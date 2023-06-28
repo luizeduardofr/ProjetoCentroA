@@ -12,7 +12,7 @@
         <aside class="sidebar-content"> 
             <div class="menu-content">
                 <img src="../../view/imagens/logo.png" class="img-logo">
-                <h2 class="menu-title">Menu</h2>
+
 
                 <nav class="navigation">
                     <ul class="menu-list">
@@ -28,7 +28,7 @@
 
         <section id="Options" class="options-content">
             <div class="main-content">
-                <h2 class="grid-main-heading">Opções</h2>
+                <h2 class="grid-main-heading">Menu</h2>
         
                 <div class="grid">
                     <div class="card">

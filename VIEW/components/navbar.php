@@ -5,7 +5,7 @@ include('../../BLL/protect.php');
 function nav()
 { ?>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style='background-color: #00ff5573; margin-bottom: 20px;'>
+    <nav class="navbar navbar-expand-lg navbar-light" style='background-color: #2E8B57; margin-bottom: 20px;'>
         <div class="container-fluid">
             <a class="navbar-brand fs-3 px-4" href="../menu/menu.php">Auto Escola Tarumã - Centro A</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
