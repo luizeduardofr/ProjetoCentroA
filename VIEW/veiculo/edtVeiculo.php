@@ -26,7 +26,7 @@ $veiculo = $bll->SelectID($id);
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
+    <?php include "../components/navbar.php"; echo nav()?>
 
     <div class="container">
         <div class="text-center mb-4">
@@ -41,18 +41,18 @@ $veiculo = $bll->SelectID($id);
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label">Marca:</label>
-                        <input type="text" class="form-control" name="marca" value="<?php echo $veiculo->getMarca(); ?>">
+                        <input type="text" class="form-control" name="txtMarca" value="<?php echo $veiculo->getMarca(); ?>">
                     </div>
 
                     <div class="col">
                         <label class="form-label">Modelo:</label>
-                        <input type="text" class="form-control" name="modelo" value="<?php echo $veiculo->getModelo(); ?>">
+                        <input type="text" class="form-control" name="txtModelo" value="<?php echo $veiculo->getModelo(); ?>">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Placa:</label>
-                    <input type="text" class="form-control" name="placa" value="<?php echo $veiculo->getPlaca(); ?>">
+                    <input type="text" class="form-control" name="txtPlaca" value="<?php echo $veiculo->getPlaca(); ?>">
                 </div>
 
                 <div style="text-align:right">

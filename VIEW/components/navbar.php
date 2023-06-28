@@ -1,27 +1,56 @@
-<?php 
+<?php
 include('../../BLL/protect.php');
+
 
 function nav()
 { ?>
 
-    <nav class='navbar navbar-light justify-content-center fs-3 mb-5' style='background-color: #00ff5573;'>
-        <div class="d-flex justify-content-between w-100">
-            <a onclick="JavaScript:location.href='../../VIEW/menu/menu.php'" class="link-dark px-5">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <span>Auto Escola Tarumã - Centro A</span>
-            <div class="dropdown px-5">
-                <button class="bg-transparent border-0" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?php echo $_SESSION['usuario'] ?>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><button onclick="JavaScript:location.href='../../VIEW/aluno/lstaluno.php'" class="dropdown-item" type="button">Aluno</button></li>
-                    <li><button onclick="JavaScript:location.href='../../VIEW/instrutor/lstinstrutor.php'" class="dropdown-item" type="button">Instrutor</button></li>
-                    <li><button onclick="JavaScript:location.href='../../VIEW/curso/lstcurso.php'" class="dropdown-item" type="button">Categoria</button></li>
-                    <li><button onclick="JavaScript:location.href='../../VIEW/veiculo/lstveiculo.php'" class="dropdown-item" type="button">Veículo</button></li>
+    <nav class="navbar navbar-expand-lg navbar-light" style='background-color: #00ff5573; margin-bottom: 20px;'>
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3 px-4" href="../menu/menu.php">Auto Escola Tarumã - Centro A</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../menu/menu.php">Inicio</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adicionar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Adicionar
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="adicionar">
+                            <li><a class="dropdown-item" href="../instrutor/addInstrutor.php">Instrutor</a></li>
+                            <li><a class="dropdown-item" href="../curso/addCurso.php">Categoria</a></li>
+                            <li><a class="dropdown-item" href="../veiculo/addVeiculo.php">Veiculo</a></li>
+                            <li><a class="dropdown-item" href="../aluno/addAluno.php">Aluno</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="listas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Listas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="listas">
+                            <li><a class="dropdown-item" href="../instrutor/lstInstrutor.php">Instrutor</a></li>
+                            <li><a class="dropdown-item" href="../curso/lstCurso.php">Categoria</a></li>
+                            <li><a class="dropdown-item" href="../veiculo/lstVeiculo.php">Veiculo</a></li>
+                            <li><a class="dropdown-item" href="../aluno/lstAluno.php">Aluno</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="user" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php echo $_SESSION['usuario'] ?>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="user">
+                            <li><a class="dropdown-item" href="../login/logout.php">Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
 
 <?php } ?>

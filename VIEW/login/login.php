@@ -4,7 +4,6 @@ session_start();
 require_once '../../DAL/conexao.php';
 
 use DAL\Conexao;
-
 $loginError = "";
 
 if (isset($_POST['usuario']) || isset($_POST['senha'])) {

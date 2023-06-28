@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
+<?php include "../components/navbar.php"; echo nav()?>
 
    <div class="container">
       <div class="text-center mb-4">
@@ -34,12 +34,12 @@
             <div class="row mb-3">
                <div class="col">
                   <label class="form-label">Marca:</label>
-                  <input type="text" class="form-control" name="txtMarca" placeholder="Volkswagen">
+                  <input type="text" class="form-control" name="txtMarca" placeholder="Marca">
                </div>
 
                <div class="col">
                   <label class="form-label">Modelo:</label>
-                  <input type="text" class="form-control" name="txtModelo" placeholder="Golf">
+                  <input type="text" class="form-control" name="txtModelo" placeholder="Modelo">
                </div>
             </div>
 

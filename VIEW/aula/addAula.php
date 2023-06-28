@@ -1,9 +1,3 @@
-<?php
-
-// include('../../BLL/protect.php');
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,34 +12,37 @@
    <!-- Font Awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-   <title>Cadastrar Categoria</title>
+   <title>Agendar Aula</title>
 </head>
 
 <body>
-   <?php include "../components/navbar.php"; echo nav()?>
+   <?php include "../components/navbar.php";
+   echo nav() ?>
 
    <div class="container">
       <div class="text-center mb-4">
-         <h3>Cadastrar Categoria</h3>
+         <h3>Agendar Aula</h3>
       </div>
 
       <div class="container d-flex justify-content-center">
-         <form action="recaddCurso.php" method="post" style="width:50vw; min-width:300px;">
+         <form action="recaddAula.php" method="post" style="width:50vw; min-width:300px;">
             <div class="row mb-3">
                <div class="col">
-                  <label class="form-label">Letra:</label>
-                  <input type="text" class="form-control" name="txtLetra" placeholder="A">
+                  <label class="form-label">Data:</label>
+                  <input type="datetime-local" class="form-control" name="txtData" placeholder="">
+               </div>
+               <div class="form-floating">
+                  <?php 
+                    include "../components/select.php";
+                    echo instrutor();
+                    echo veiculo();
+                    echo aluno();
+                  ?>
                </div>
 
-               <div class="col">
-                  <label class="form-label">Valor:</label>
-                  <input type="text" class="form-control" name="txtValor" placeholder="R$">
-               </div>
-            </div>
-
-            <div style="text-align:right"> 
+            <div style="text-align:right">
                <button type="submit" class="btn btn-success" name="submit">Salvar</button>
-               <a href="lstcurso.php" class="btn btn-danger">Cancelar</a>
+               <a href="lstaluno.php" class="btn btn-danger">Cancelar</a>
             </div>
          </form>
       </div>

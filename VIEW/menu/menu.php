@@ -45,6 +45,9 @@
                     <div class="card">
                         <a href="../veiculo/lstVeiculo.php">Veículo</a>
                     </div>
+                    <div class="card">
+                        <a href="../aula/addAula.php">Agendar</a>
+                    </div>
 
                     <div class="card">
                         <a href="../login/logout.php">Sair</a>

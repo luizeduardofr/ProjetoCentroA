@@ -8,6 +8,7 @@
     $instrutor->setCpf($_POST['txtCpf']);
     $instrutor->setNascimento($_POST['txtNascimento']);
 
+    // var_dump($instrutor);
     $bll = new \BLL\bllInstrutor();
     $bll->Insert($instrutor);
 

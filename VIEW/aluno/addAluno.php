@@ -16,7 +16,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
+   <?php include "../components/navbar.php";
+   echo nav() ?>
 
    <div class="container">
       <div class="text-center mb-4">
@@ -47,7 +48,7 @@
                <input type="text" class="form-control" name="txtEndereco" placeholder="Rua">
             </div>
 
-            <div style="text-align:right"> 
+            <div style="text-align:right">
                <button type="submit" class="btn btn-success" name="submit">Salvar</button>
                <a href="lstaluno.php" class="btn btn-danger">Cancelar</a>
             </div>

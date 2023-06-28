@@ -76,7 +76,7 @@
         }
 
         public function Insert(\MODEL\Instrutor $instrutor){
-            $sql = "INSERT INTO aluno (nome, cpf, nascimento)
+            $sql = "INSERT INTO instrutor (nome, cpf, nascimento)
                     VALUES (:nome, :cpf, :nascimento);";
 
             $con = Conexao::conectar();  
@@ -103,14 +103,13 @@
         }
 
         public function Delete(int $id){
-            $sql = "DELETE from instrutor WHERE id=?";
+            $sql = "DELETE from instrutor WHERE id = :id;";
 
-            $pdo = Conexao::conectar();
-            $pdo->setAttibute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            $query = $pdo->prepare($sql);
-            $result = $query->execute(array($id));
-            $con = Conexao::desconectar();
-            return $result;
+            $conn = Conexao::conectar();
+            $query = $conn->prepare($sql);
+            $query->bindValue(':id', $id, \PDO::PARAM_INT);
+            $query->execute();
+            Conexao::desconectar();
         }
     }
 ?>

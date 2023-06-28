@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
+   <?php include "../components/navbar.php"; echo nav()?>
 
    <div class="container">
       <div class="text-center mb-4">
@@ -30,11 +30,11 @@
       </div>
 
       <div class="container d-flex justify-content-center">
-         <form action="recaddInstrutor.php" method="post" style="width:50vw; min-width:300px;">
+         <form action="recaddInstrutor.php" method="POST" style="width:50vw; min-width:300px;">
             <div class="row mb-3">
                <div class="col">
                   <label class="form-label">Nome:</label>
-                  <input type="text" class="form-control" name="txtNome" placeholder="Luiz">
+                  <input type="text" class="form-control" name="txtNome" placeholder="Nome">
                </div>
 
                <div class="col">
