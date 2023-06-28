@@ -21,7 +21,7 @@ $curso = $bll->SelectID($id);
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Editar Curso</title>
+    <title>Editar Categoria</title>
 </head>
 
 <body>
@@ -29,11 +29,11 @@ $curso = $bll->SelectID($id);
 
     <div class="container">
         <div class="text-center mb-4">
-            <h3>Editar Curso</h3>
+            <h3>Editar Categoria</h3>
         </div>
 
         <div class="container d-flex justify-content-center">
-            <form action="recedtcurso.php" method="post" style="width:50vw; min-width:300px;">
+            <form action="recedtCurso.php" method="post" style="width:50vw; min-width:300px;">
                 <div class="col">
                     <input type="hidden" name="txtID" value=<?php echo $id; ?>>
                 </div>
@@ -61,6 +61,6 @@ $curso = $bll->SelectID($id);
 
 </body>
 
-<?php include_once '../../VIEW/validacao/footer.php'; ?>
+<?php include_once '../../VIEW/footer/footer.php'; ?>
 
 </html>

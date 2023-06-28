@@ -11,68 +11,95 @@
 
             $con = Conexao::conectar();
             $result = $con->query($sql);
-            $con = Conexao::desconectar();
+            Conexao::desconectar();
+
+            $lstinstrutor = [];
 
             foreach ($result as $linha){
-                $instrutor = new \MODEL\Instrutor($linha['id'], $linha['nome'], $linha['cpf'], 
-                                                  date('d/m/Y',strtotime($linha['nascimento'])));
-  
-                $lstinstrutor[] = $instrutor; 
+                $instrutor = new \MODEL\Instrutor();
+                $instrutor->setId($linha['id']);
+                $instrutor->setNome($linha['nome']);
+                $instrutor->setCpf($linha['cpf']);
+                $instrutor->setNascimento($linha['nascimento']);
 
-                return $lstinstrutor;
+                $lstinstrutor[] = $instrutor; 
             }
+            return $lstinstrutor;
         }
 
         public function SelectID(int $id){
-            $sql = "select * from instrutor where id=?;";
-            $pdo = Conexao::conectar();
-            $query = $pdo->prepare($sql);
-            $query->execute (array($id));
+            $sql = "select * from instrutor where id= :id;";
+            
+            $con = Conexao::conectar();
+            $query = $con->prepare($sql);
+            $query->bindValue(':id', $id, \PDO::PARAM_INT);
+            $query->execute();
             $linha = $query->fetch(\PDO::FETCH_ASSOC);
             Conexao::desconectar();
 
-            $instrutor = new \MODEL\Instrutor($linha['id'], $linha['nome'], $linha['cpf'], date('d/m/Y',strtotime($linha['nascimento'])));
+            if(!$linha){
+                return null;
+            }
+
+            $instrutor = new \MODEL\Instrutor();
+            $instrutor->setId($linha['id']);
+            $instrutor->setNome($linha['nome']);
+            $instrutor->setCpf($linha['cpf']);
+            $instrutor->setNascimento($linha['nascimento']);
 
             return $instrutor;
         }
 
         public function SelectNome(string $nome){
-            $sql = "select * from instrutor where nome like '%" . $nome . "%' order by nome;";
+            $sql = "select * from instrutor WHERE nome LIKE :nome ORDER BY nome;";
 
-            $pdo = Conexao::conectar();
-            $query = $pdo->prepare($sql);
-            $result = $pdo->query($sql);
+            $con = Conexao::conectar();
+            $query = $con->prepare($sql);
+            $query->bindValue(':nome', '%' . $nome . '%', \PDO::PARAM_STR);
+            $query->execute();
+            $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+            Conexao::desconectar();
 
-            $lstinstrutor = NULL;
+            $lstinstrutor = [];
             foreach($result as $linha){
-                $instrutor = new \MODEL\Aluno($linha['id'], $linha['nome'], $linha['cpf'], date('d/m/Y',strtotime($linha['nascimento'])));
+                $instrutor = new \MODEL\Instrutor();
+
+                $instrutor->setId($linha['id']);
+                $instrutor->setNome($linha['nome']);
+                $instrutor->setCpf($linha['cpf']);
+                $instrutor->setNascimento($linha['nascimento']);
 
                 $lstinstrutor[] = $instrutor;
     
-                return $instrutor;
             }
+                return $lstinstrutor;
         }
 
         public function Insert(\MODEL\Instrutor $instrutor){
-            $con = Conexao::conectar();
-            $sql = "INSERT INTO instrutor (nome, cpf, nascimento)
-                    VALUES ('{$instrutor->getNome()}, '{$instrutor->getCpf()}', '{$instrutor->getNascimento()}');";
-            
-            $result = $con->query($sql);
-            $con = Conexao::desconectar();
-            return $result;
+            $sql = "INSERT INTO aluno (nome, cpf, nascimento)
+                    VALUES (:nome, :cpf, :nascimento);";
+
+            $con = Conexao::conectar();  
+            $query = $con->prepare($sql);
+            $query->bindValue(':nome', $instrutor->getNome(), \PDO::PARAM_STR);              
+            $query->bindValue(':cpf', $instrutor->getCpf(), \PDO::PARAM_STR);  
+            $query->bindValue(':nascimento', $instrutor->getNascimento(), \PDO::PARAM_STR);  
+            $query->execute();
+            Conexao::desconectar();
         }
 
         public function Update(\MODEL\Instrutor $instrutor){
-            $sql = "UPDATE instrutor SET nome=?, cpf=?, nascimento=? WHERE id=?";
-
-            $pdo = Conexao::conectar();
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            $query = $pdo->prepare($sql);
-            $result = $query->execute(array($instrutor->getNome(), $instrutor->getCpf(), 
-                                            $instrutor->getNascimento(), $instrutor->getId()));
-            $con = Conexao::desconectar();
-            return $result;
+    
+            $sql = "UPDATE instrutor SET nome= :nome, cpf= :cpf, nascimento= :nascimento WHERE id= :id;";
+    
+            $con = Conexao::conectar();
+            $query = $con->prepare($sql);
+            $query->bindValue(':id', $instrutor->getId(), \PDO::PARAM_INT);
+            $query->bindValue(':nome', $instrutor->getNome(), \PDO::PARAM_STR);
+            $query->bindValue(':cpf', $instrutor->getCpf(), \PDO::PARAM_STR);
+            $query->bindValue(':nascimento', $instrutor->getNascimento(), \PDO::PARAM_STR);
+            $query->execute();
+            Conexao::desconectar();
         }
 
         public function Delete(int $id){

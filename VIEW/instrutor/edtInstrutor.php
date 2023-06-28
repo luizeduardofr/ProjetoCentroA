@@ -1,5 +1,5 @@
 <?php
-include_once '../../BLL/bllAluno.php';
+include_once '../../BLL/bllInstrutor.php';
 // include('../../BLL/protect.php');
 
 $id = $_GET['id'];

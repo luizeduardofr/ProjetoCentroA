@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="card">
-                        <a>Sair</a>
+                        <a href="../login/logout.php">Sair</a>
                     </div>
 
                 </div>

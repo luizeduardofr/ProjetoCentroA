@@ -34,8 +34,7 @@ else $lstinstrutor = $bll->SelectNome($busca);
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
-
+    <?php include "../components/navbar.php"; echo nav()?>
   <div class="container">
     <div class="text-center mb-4">
       <h3>Listar Instrutores</h3>
@@ -72,8 +71,8 @@ else $lstinstrutor = $bll->SelectNome($busca);
             <td><?php echo $instrutor->getCpf(); ?></td>
             <td><?php echo $instrutor->getNascimentoF(); ?></td>
             <td>
-              <a onclick="JavaScript:location.href='addIinstrutor.php?id='+(<?php echo $aluno->getId(); ?>)" class="link-dark"><i class="fa-solid fa-plus fs-5 me-3"></i></a>
-              <a onclick="JavaScript:location.href='edtIinstrutor.php?id='+(<?php echo $aluno->getId(); ?>)" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+              <a onclick="JavaScript:location.href='addInstrutor.php?id='+(<?php echo $instrutor->getId(); ?>)" class="link-dark"><i class="fa-solid fa-plus fs-5 me-3"></i></a>
+              <a onclick="JavaScript:location.href='edtInstrutor.php?id='+(<?php echo $instrutor->getId(); ?>)" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
               <a onclick="JavaScript:remover(<?php echo $instrutor->getId(); ?>)" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
             </td>
           </tr>

@@ -1,9 +1,3 @@
-<?php
-
-// include('../../BLL/protect.php');
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 

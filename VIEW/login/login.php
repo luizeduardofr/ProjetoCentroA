@@ -5,43 +5,35 @@ require_once '../../DAL/conexao.php';
 
 use DAL\Conexao;
 
-$codigoError = $senhaError = $loginError = "";
+$loginError = "";
 
+if (isset($_POST['usuario']) || isset($_POST['senha'])) {
 
-if (isset($_POST['codigo']) && isset($_POST['senha'])) {
-
-    if (strlen($_POST['codigo']) == 0) {
-        $codigoError = "Preencha seu login";
-    } else if (strlen($_POST['senha']) == 0) {
-        $senhaError = "Preencha sua senha";
-    } else {
-        $codigo = $_POST['codigo'];
+        $usuario = $_POST['usuario'];
         $senha = $_POST['senha'];
 
         $conexao = Conexao::conectar();
 
-        $codigo = $conexao->quote($codigo);
+        $usuario = $conexao->quote($usuario);
         $senha = $conexao->quote(md5($senha));
 
-        $sql = "SELECT * FROM aluno WHERE id = $codigo AND senha = $senha";
+        $sql = "SELECT * FROM usuario WHERE usuario = $usuario AND senha = $senha";
 
-        $result = $conexao->query($sql);
+        $stmt = $conexao->query($sql);
 
-        if ($result->rowCount() == 1) {
-            $usuario = $result->fetch(PDO::FETCH_ASSOC);
+        if ($stmt->rowCount() == 1) {
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['usuario'] = $usuario['usuario'];
 
-            header("Location: ../menuPrincipal/painel.php");
+            header("location: ../../VIEW/menu/menu.php");
             exit();
         } else {
-            $loginError = "Código ou senha incorretos";
+             $loginError = "Código ou senha incorreta";
         }
 
         Conexao::desconectar();
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -58,17 +50,20 @@ if (isset($_POST['codigo']) && isset($_POST['senha'])) {
 
 <body>
     <div class="box">
-        <h2>Login</h2>
-        <form action="">
+        <h2>Efetuar Login</h2>
+        <form method="POST">
             <div class="inputBox">
                 <input type="text" name="usuario" autocomplete="off" autofocus="" required>
                 <label for="">Usuário</label>
             </div>
             <div class="inputBox">
-                <input type="password" name="password" required>
+                <input type="password" name="senha" required>
                 <label for="">Senha</label>
             </div>
             <input type="submit" value="Entrar">
+            <?php if(isset($loginError)){
+                echo "<div class='danger'>$loginError</div>";
+            } ?>
         </form>
     </div>
 

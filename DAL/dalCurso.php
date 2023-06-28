@@ -10,13 +10,14 @@ include_once 'C:\xampp\htdocs\ProjetoCentroA\MODEL\Curso.php';
 class dalCurso
 {
 
-    public function Select()
-    {
-        $con = Conexao::conectar();
-
+    public function Select(){
         $sql = "select * from curso;";
+
+        $con = Conexao::conectar();
         $result = $con->query($sql);
         $con = Conexao::desconectar();
+
+        $lstcurso = [];
 
         foreach ($result as $linha) {
             $curso = new \MODEL\Curso();
@@ -24,21 +25,17 @@ class dalCurso
             $curso->setId($linha['id']);
             $curso->setLetra($linha['letra']);
             $curso->setValor($linha['valor']);
+
             $lstcurso[] = $curso;
         }
-        if(isset($lstcurso)){
-            return $lstcurso;
-        }else{
-            return array();
-        }
+        return $lstcurso;
     }
 
-    public function SelectID(int $id)
-    {
+    public function SelectID(int $id){
         $sql = "select * from curso where id= :id;";
             
-        $pdo = Conexao::conectar();
-        $query = $pdo->prepare($sql);
+        $con = Conexao::conectar();
+        $query = $con->prepare($sql);
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute ();
         $linha = $query->fetch(\PDO::FETCH_ASSOC);
@@ -47,6 +44,7 @@ class dalCurso
         if(!$linha){
             return null;
         }
+
         $curso = new \MODEL\Curso();
 
         $curso->setId($linha['id']);
@@ -54,36 +52,33 @@ class dalCurso
         $curso->setValor($linha['valor']);
 
         return $curso;
-
     }
 
-    public function Insert(\MODEL\Curso $curso)
-    {
+    public function Insert(\MODEL\Curso $curso){
+        $sql = "INSERT INTO curso (letra, valor) VALUES (:letra, :valor);";
+
         $con = Conexao::conectar(); 
-        $sql = "INSERT INTO curso (letra, valor) 
-               VALUES ('{$curso->getLetra()}', '{$curso->getValor()}');";
+        $query= $con->prepare($sql);
+        $query->bindValue(':letra', $curso->getLetra(), \PDO::PARAM_STR);
+        $query->bindValue(':valor', $curso->getValor(), \PDO::PARAM_STR);
+        $query->execute();
+        $con = Conexao::desconectar();
+    }
+
+    public function Update(\MODEL\Curso $curso){
     
-        $result = $con->query($sql); 
-        $con = Conexao::desconectar();
-        return $result; 
+        $sql = "UPDATE curso SET letra= :letra, valor= :valor WHERE id= :id;";
+
+        $con = Conexao::conectar();
+        $query = $con->prepare($sql);
+        $query->bindValue(':id', $curso->getId(), \PDO::PARAM_INT);
+        $query->bindValue(':letra', $curso->getLetra(), \PDO::PARAM_STR);
+        $query->bindValue(':valor', $curso->getValor(), \PDO::PARAM_STR);
+        $query->execute();
+        Conexao::desconectar();
     }
 
-    public function Update(\MODEL\Curso $curso)
-    {
-        $sql = "UPDATE curso SET letra=?, valor=? WHERE id=?";
-
-        $pdo = Conexao::conectar();
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        $query = $pdo->prepare($sql);
-        $result = $query->execute(array($curso->getLetra(), $curso->getValor(), $curso->getId()));
-        $con = Conexao::desconectar();
-        return $result;
-
-
-    }
-
-    public function Delete($id)
-    {
+    public function Delete($id) {
         $sql = "DELETE FROM curso WHERE id = :id;";
         
         $conn = Conexao::conectar();
@@ -91,6 +86,5 @@ class dalCurso
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute();
         Conexao::desconectar();
-
     }
 }

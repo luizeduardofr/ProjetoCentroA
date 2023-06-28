@@ -34,8 +34,7 @@ else $lstaluno = $bll->SelectNome($busca);
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">Auto Escola Tarumã - Centro A</nav>
-
+  <?php include "../components/navbar.php"; echo nav()?>
   <div class="container">
     <div class="text-center mb-4">
       <h3>Listar Aluno</h3>
