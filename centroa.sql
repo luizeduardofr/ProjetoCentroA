@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jun-2023 às 01:20
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 28/06/2023 às 05:55
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aluno`
+-- Estrutura para tabela `aluno`
 --
 
 CREATE TABLE `aluno` (
@@ -36,33 +36,45 @@ CREATE TABLE `aluno` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
--- Extraindo dados da tabela `aluno`
+-- Despejando dados para a tabela `aluno`
 --
 
 INSERT INTO `aluno` (`id`, `nome`, `cpf`, `nascimento`, `endereco`) VALUES
-(1, 'Luiz Eduardo', '472924', '2000-05-14', 'Rua Guiacara'),
-(2, 'Pedro', '111111', '2003-09-02', 'Rua Guiacara'),
-(3, 'Eduardo', '222222', '1993-06-03', 'Rua Piracanjuba');
+(8, 'eduardo', '213123', '2992-02-02', 'ASSIS'),
+(9, 'JOAO', '23123', '1000-02-02', 'PAINE'),
+(14, 'Pedro', '231231', '2023-06-22', 'ASSIS'),
+(18, 'kaique', '231231', '2023-06-22', 'kakassad');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aula`
+-- Estrutura para tabela `aula`
 --
 
 CREATE TABLE `aula` (
-  `id` int(5) NOT NULL,
-  `aluno` int(5) NOT NULL,
-  `professor` int(5) NOT NULL,
-  `data` date NOT NULL,
-  `horario` time NOT NULL,
-  `veiculo` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+  `id` int(11) NOT NULL,
+  `id_instrutor` int(11) NOT NULL,
+  `id_aluno` int(11) NOT NULL,
+  `id_veiculo` int(11) NOT NULL,
+  `data` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `aula`
+--
+
+INSERT INTO `aula` (`id`, `id_instrutor`, `id_aluno`, `id_veiculo`, `data`) VALUES
+(1, 6, 9, 4, '2023-06-24 00:36:00'),
+(2, 6, 9, 4, '2023-06-30 00:40:00'),
+(3, 7, 14, 4, '2023-06-29 00:46:00'),
+(4, 7, 9, 2, '2023-07-01 00:45:00'),
+(5, 7, 14, 4, '2023-06-30 00:52:00'),
+(6, 4, 8, 2, '2023-06-21 06:48:00');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `curso`
+-- Estrutura para tabela `curso`
 --
 
 CREATE TABLE `curso` (
@@ -72,16 +84,24 @@ CREATE TABLE `curso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
--- Extraindo dados da tabela `curso`
+-- Despejando dados para a tabela `curso`
 --
 
 INSERT INTO `curso` (`id`, `letra`, `valor`) VALUES
-(1, 'AB', 2000);
+(47, 'V', 2),
+(48, 'G', 23),
+(49, 'G', 123),
+(50, 'H', 23),
+(51, 'h', 34),
+(52, 'hj', 3434),
+(53, 'g', 213213),
+(54, 'a', 1000),
+(56, 'MMM', 2354);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `instrutor`
+-- Estrutura para tabela `instrutor`
 --
 
 CREATE TABLE `instrutor` (
@@ -91,10 +111,19 @@ CREATE TABLE `instrutor` (
   `nascimento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
+--
+-- Despejando dados para a tabela `instrutor`
+--
+
+INSERT INTO `instrutor` (`id`, `nome`, `cpf`, `nascimento`) VALUES
+(4, 'KIKI', '231231', '2023-06-17'),
+(6, 'maicon', '123123', '2023-06-08'),
+(7, 'JUNIOR', '232131', '2023-06-24');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -104,10 +133,17 @@ CREATE TABLE `usuario` (
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
+--
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usuario`, `senha`, `email`) VALUES
+(1, 'pedro', '81dc9bdb52d04dc20036dbd8313ed055', 'pedro2003_oliveira@Outlook.com');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `veiculo`
+-- Estrutura para tabela `veiculo`
 --
 
 CREATE TABLE `veiculo` (
@@ -118,99 +154,108 @@ CREATE TABLE `veiculo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
+-- Despejando dados para a tabela `veiculo`
+--
+
+INSERT INTO `veiculo` (`id`, `marca`, `modelo`, `placa`) VALUES
+(2, 'SANDERO', 'GALIL', '23213'),
+(3, 'SANDERO', 'GALIL', '23213'),
+(4, 'MERCEDEZ', 'BENS', '22131');
+
+--
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `aluno`
+-- Índices de tabela `aluno`
 --
 ALTER TABLE `aluno`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `aula`
+-- Índices de tabela `aula`
 --
 ALTER TABLE `aula`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `aluno_aula` (`aluno`),
-  ADD KEY `professor_aula` (`professor`),
-  ADD KEY `veiculo_aula` (`veiculo`);
+  ADD KEY `id_aluno` (`id_aluno`),
+  ADD KEY `id_instrutor` (`id_instrutor`),
+  ADD KEY `id_veiculo` (`id_veiculo`);
 
 --
--- Índices para tabela `curso`
+-- Índices de tabela `curso`
 --
 ALTER TABLE `curso`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `instrutor`
+-- Índices de tabela `instrutor`
 --
 ALTER TABLE `instrutor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `veiculo`
+-- Índices de tabela `veiculo`
 --
 ALTER TABLE `veiculo`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `aula`
 --
 ALTER TABLE `aula`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de tabela `instrutor`
 --
 ALTER TABLE `instrutor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `veiculo`
 --
 ALTER TABLE `veiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `aula`
+-- Restrições para tabelas `aula`
 --
 ALTER TABLE `aula`
-  ADD CONSTRAINT `aluno_aula` FOREIGN KEY (`aluno`) REFERENCES `aluno` (`id`),
-  ADD CONSTRAINT `professor_aula` FOREIGN KEY (`professor`) REFERENCES `instrutor` (`id`),
-  ADD CONSTRAINT `veiculo_aula` FOREIGN KEY (`veiculo`) REFERENCES `veiculo` (`id`);
+  ADD CONSTRAINT `aula_ibfk_1` FOREIGN KEY (`id_aluno`) REFERENCES `aluno` (`id`),
+  ADD CONSTRAINT `aula_ibfk_2` FOREIGN KEY (`id_instrutor`) REFERENCES `instrutor` (`id`),
+  ADD CONSTRAINT `aula_ibfk_3` FOREIGN KEY (`id_veiculo`) REFERENCES `veiculo` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
