@@ -1,19 +1,19 @@
 <?php
-//sou gay
-use BLL\bllAula;
 
-include_once '../../BLL/bllAula.php';
+  use BLL\bllAula;
 
-if (isset($_GET['busca']))
-  $busca = $_GET['busca'];
-else $busca = null;
+  include_once '../../BLL/bllAula.php';
 
-$bll = new \BLL\bllAula();
+  if (isset($_GET['busca']))
+    $busca = $_GET['busca'];
+  else $busca = null;
 
-// if ($busca == null)
-  $lstaula = $bll->Select();
+  $bll = new \BLL\bllAula();
 
-// else $lstaula = $bll->SelectNome($busca);
+  // if ($busca == null)
+    $lstaula = $bll->Select();
+
+  // else $lstaula = $bll->SelectNome($busca);
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +41,10 @@ $bll = new \BLL\bllAula();
       <h3>Agendamentos</h3>
     </div>
     <div class="card-search">
-      <form action="../aluno/lstAluno.php" method="GET" id="" class="">
-        <h5>Pesquisa de Agendamentos</h5>
+      <form action="../aula/lstaula.php" method="GET" id="" class="">
+        <h5>Pesquisa dos Agendamentos</h5>
         <div class="teste">
-          <input type="text" class="input-pesquisa" id="txtBusca" name="busca">
+          <input type="text" class="input-pesquisa" id="txtBusca" name="busca" placeholder="Nome do Aluno">
           <button type="submit" class="btn btn-primary float-end"><span>Pesquisar</span></button>
         </div>
       </form>
@@ -64,7 +64,6 @@ $bll = new \BLL\bllAula();
       <tbody>
         <?php
         foreach ($lstaula as $aula) {
-
 
         ?>
           <tr>
@@ -97,8 +96,8 @@ $bll = new \BLL\bllAula();
 
 <script>
   function remover(id) {
-    if (confirm('Excluir o Aluno ' + id + '?')) {
-      location.href = 'remoAluno.php?id=' + id;
+    if (confirm('Excluir a Aula ' + id + '?')) {
+      location.href = 'remoAula.php?id=' + id;
     }
   }
 </script>

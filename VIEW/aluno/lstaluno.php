@@ -43,7 +43,7 @@ else $lstaluno = $bll->SelectNome($busca);
       <form action="../aluno/lstAluno.php" method="GET" id="" class="">
         <h5>Pesquisa de Alunos</h5>
         <div class="teste">
-          <input type="text" class="input-pesquisa" id="txtBusca" name="busca">
+          <input type="text" class="input-pesquisa" id="txtBusca" name="busca" placeholder="Nome">
           <button type="submit" class="btn btn-primary float-end"><span>Pesquisar</span></button>
         </div>
       </form>

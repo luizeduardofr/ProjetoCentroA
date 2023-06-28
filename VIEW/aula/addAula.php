@@ -39,10 +39,10 @@
                     echo aluno();
                   ?>
                </div>
-
             <div style="text-align:right">
+               <br>
                <button type="submit" class="btn btn-success" name="submit">Salvar</button>
-               <a href="lstaluno.php" class="btn btn-danger">Cancelar</a>
+               <a href="../../VIEW/aula/lstaula.php" class="btn btn-danger">Cancelar</a>
             </div>
          </form>
       </div>

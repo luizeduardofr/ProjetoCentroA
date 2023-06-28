@@ -22,10 +22,11 @@ function nav()
                             Adicionar
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="adicionar">
+                            <li><a class="dropdown-item" href="../aluno/addAluno.php">Aluno</a></li>
                             <li><a class="dropdown-item" href="../instrutor/addInstrutor.php">Instrutor</a></li>
                             <li><a class="dropdown-item" href="../curso/addCurso.php">Categoria</a></li>
-                            <li><a class="dropdown-item" href="../veiculo/addVeiculo.php">Veiculo</a></li>
-                            <li><a class="dropdown-item" href="../aluno/addAluno.php">Aluno</a></li>
+                            <li><a class="dropdown-item" href="../veiculo/addVeiculo.php">Veículo</a></li>
+                            <li><a class="dropdown-item" href="../aula/addAula.php">Aula</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -33,10 +34,10 @@ function nav()
                             Listas
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="listas">
+                            <li><a class="dropdown-item" href="../aluno/lstAluno.php">Aluno</a></li>
                             <li><a class="dropdown-item" href="../instrutor/lstInstrutor.php">Instrutor</a></li>
                             <li><a class="dropdown-item" href="../curso/lstCurso.php">Categoria</a></li>
-                            <li><a class="dropdown-item" href="../veiculo/lstVeiculo.php">Veiculo</a></li>
-                            <li><a class="dropdown-item" href="../aluno/lstAluno.php">Aluno</a></li>
+                            <li><a class="dropdown-item" href="../veiculo/lstVeiculo.php">Veículo</a></li>
                             <li><a class="dropdown-item" href="../aula/lstAula.php">Agendamentos</a></li>
                         </ul>
                     </li>

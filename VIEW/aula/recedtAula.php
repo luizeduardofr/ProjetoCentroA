@@ -5,7 +5,6 @@
     include_once '../../BLL/bllVeiculo.php';
     include_once '../../BLL/bllInstrutor.php';
 
-    
     $bllVeiculo = new \BLL\bllVeiculo();
     $veiculo = $bllVeiculo->SelectID($_POST['veiculo']);
     
@@ -24,7 +23,7 @@
 
     // var_dump($instrutor);
     $bll = new \BLL\bllAula();
-    $bll->Insert($aula);
+    $bll->Update($aula);
 
     header("location: lstaula.php");
 ?>

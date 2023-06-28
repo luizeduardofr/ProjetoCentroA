@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/06/2023 às 05:55
+-- Tempo de geração: 28/06/2023 às 18:05
 -- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.0.28
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,10 +40,9 @@ CREATE TABLE `aluno` (
 --
 
 INSERT INTO `aluno` (`id`, `nome`, `cpf`, `nascimento`, `endereco`) VALUES
-(8, 'eduardo', '213123', '2992-02-02', 'ASSIS'),
-(9, 'JOAO', '23123', '1000-02-02', 'PAINE'),
-(14, 'Pedro', '231231', '2023-06-22', 'ASSIS'),
-(18, 'kaique', '231231', '2023-06-22', 'kakassad');
+(1, 'Luiz', '111.111.111-11', '2000-05-14', 'Rua'),
+(11, 'Pedro', '222.222.222-22', '2003-05-10', 'Rua Guiaçara'),
+(12, 'Eduardo Valim', '333.333.333-33', '1992-08-05', 'Rua Taruma');
 
 -- --------------------------------------------------------
 
@@ -58,18 +57,6 @@ CREATE TABLE `aula` (
   `id_veiculo` int(11) NOT NULL,
   `data` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `aula`
---
-
-INSERT INTO `aula` (`id`, `id_instrutor`, `id_aluno`, `id_veiculo`, `data`) VALUES
-(1, 6, 9, 4, '2023-06-24 00:36:00'),
-(2, 6, 9, 4, '2023-06-30 00:40:00'),
-(3, 7, 14, 4, '2023-06-29 00:46:00'),
-(4, 7, 9, 2, '2023-07-01 00:45:00'),
-(5, 7, 14, 4, '2023-06-30 00:52:00'),
-(6, 4, 8, 2, '2023-06-21 06:48:00');
 
 -- --------------------------------------------------------
 
@@ -88,15 +75,8 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id`, `letra`, `valor`) VALUES
-(47, 'V', 2),
-(48, 'G', 23),
-(49, 'G', 123),
-(50, 'H', 23),
-(51, 'h', 34),
-(52, 'hj', 3434),
-(53, 'g', 213213),
-(54, 'a', 1000),
-(56, 'MMM', 2354);
+(1, 'A', 1200),
+(6, 'AB', 2300);
 
 -- --------------------------------------------------------
 
@@ -116,9 +96,7 @@ CREATE TABLE `instrutor` (
 --
 
 INSERT INTO `instrutor` (`id`, `nome`, `cpf`, `nascimento`) VALUES
-(4, 'KIKI', '231231', '2023-06-17'),
-(6, 'maicon', '123123', '2023-06-08'),
-(7, 'JUNIOR', '232131', '2023-06-24');
+(1, 'Junior', '1234', '1990-06-17');
 
 -- --------------------------------------------------------
 
@@ -138,7 +116,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `usuario`, `senha`, `email`) VALUES
-(1, 'pedro', '81dc9bdb52d04dc20036dbd8313ed055', 'pedro2003_oliveira@Outlook.com');
+(1, 'luiz', '81dc9bdb52d04dc20036dbd8313ed055', 'luiz_faculdade@outlook.com'),
+(2, 'eduardo', '81dc9bdb52d04dc20036dbd8313ed055', 'eduardo@outlook.com'),
+(3, 'pedro', '81dc9bdb52d04dc20036dbd8313ed055', 'pedro@outlook.com');
 
 -- --------------------------------------------------------
 
@@ -158,9 +138,9 @@ CREATE TABLE `veiculo` (
 --
 
 INSERT INTO `veiculo` (`id`, `marca`, `modelo`, `placa`) VALUES
-(2, 'SANDERO', 'GALIL', '23213'),
-(3, 'SANDERO', 'GALIL', '23213'),
-(4, 'MERCEDEZ', 'BENS', '22131');
+(1, 'Volkswagen', 'Golf', 'BRA2E19'),
+(2, 'Ford', 'Eco Sport', 'EX3MPL0'),
+(3, 'Volkswagen', 'Gol G4', 'EX3MPL0');
 
 --
 -- Índices para tabelas despejadas
@@ -213,37 +193,37 @@ ALTER TABLE `veiculo`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `aula`
 --
 ALTER TABLE `aula`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `instrutor`
 --
 ALTER TABLE `instrutor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `veiculo`
 --
 ALTER TABLE `veiculo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para tabelas despejadas

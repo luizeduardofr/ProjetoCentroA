@@ -1,25 +1,36 @@
 <?php
 
-namespace BLL;
+    namespace BLL;
+    use DAL\dalAula;
+    include_once '../../DAL/dalAula.php';
 
-include_once '../../DAL/dalAula.php';
-
-use DAL\dalAula;
-
-class bllAula
-{
-    public function Insert(\MODEL\Aula $aula)
+    class bllAula
     {
-        $dal = new \DAL\dalAula();
+    
+        public function Select()
+        {
+            $dal = new  \Dal\dalAula();
 
-        $dal->Insert($aula);
+            return $dal->Select();
+        }
+
+        public function Insert(\MODEL\Aula $aula)
+        {
+            $dal = new \DAL\dalAula();
+
+            $dal->Insert($aula);
+        }
+
+        public function Update (\MODEL\Aula $aula){
+            $dal = new \DAL\dalAula(); 
+
+            $dal->Update($aula);
+        }
+
+        public function Delete (int $id){
+            $dal = new \DAL\dalAula(); 
+
+            $dal->Delete($id);
+        }
     }
-
-
-    public function select()
-    {
-        $dal = new  \Dal\dalAula();
-
-        return $dal->Select();
-    }
-}
+?>

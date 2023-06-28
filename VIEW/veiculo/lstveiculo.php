@@ -43,7 +43,7 @@ else $lstveiculo = $bll->SelectMarca($busca);
       <form action="../veiculo/lstveiculo.php" method="GET" id="" class="">
         <h5>Pesquisa de Veículos</h5>
         <div class="teste">
-          <input type="text" class="input-pesquisa" id="txtBusca" name="busca">
+          <input type="text" class="input-pesquisa" id="txtBusca" name="busca" placeholder="Marca">
           <button type="submit" class="btn btn-primary float-end"><span>Pesquisar</span></button>
         </div>
       </form>

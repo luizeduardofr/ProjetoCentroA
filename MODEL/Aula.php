@@ -14,6 +14,7 @@ class Aula
 
     public function __construct()
     {
+        
     }
 
     public function getId()
@@ -30,6 +31,7 @@ class Aula
     {
         return $this->instrutor;
     }
+    
     public function getNomeInstrutor()
     {
         return $this->instrutor->getNome();
