@@ -38,7 +38,7 @@ body {
 }
 
 .menu-content {
-    width: 80%;
+    width: 85%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -94,13 +94,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-left: 25rem;
+    margin-left: 19rem;
 }
 
 .grid-main-heading {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     color: #2F4F4F;
-    margin-left: 27.5rem;
+    margin-left: 21.5rem;
+    margin-top: 4rem;
 }
 
 .grid {
@@ -109,6 +110,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
     counter-reset: grid-counter;
+    margin-top: 2rem;
 }
 
 .card {
@@ -118,6 +120,7 @@ body {
     justify-content: center; 
     align-items: center;
     background-color: #2E8B57;
+    border-radius: 10%;
 }
 
 .card a:hover {

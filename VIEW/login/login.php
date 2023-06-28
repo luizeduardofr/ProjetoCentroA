@@ -4,6 +4,7 @@ session_start();
 require_once '../../DAL/conexao.php';
 
 use DAL\Conexao;
+
 $loginError = "";
 
 if (isset($_POST['usuario']) || isset($_POST['senha'])) {
@@ -59,10 +60,11 @@ if (isset($_POST['usuario']) || isset($_POST['senha'])) {
                 <input type="password" name="senha" required>
                 <label for="">Senha</label>
             </div>
-            <input type="submit" value="Entrar">
             <?php if(isset($loginError)){
                 echo "<div class='danger'>$loginError</div>";
             } ?>
+            <br>
+            <input type="submit" value="Entrar">
         </form>
     </div>
 
