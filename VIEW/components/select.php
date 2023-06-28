@@ -10,7 +10,7 @@ function instrutor()
 
     $instrutores = $bll->Select();
 ?>
-
+    <br>
     <select name="instrutor" class="form-select" id="instrutor">
         <option value="0">Escolher instrutor</option>
         <?php foreach ($instrutores as $instrutor) : ?>
@@ -27,7 +27,7 @@ function veiculo()
 
     $veiculos = $bll->Select();
 ?>
-
+    <br>
     <select name="veiculo" class="form-select" id="veiculo">
         <option value="0">Escolher veiculo</option>
         <?php foreach ($veiculos as $veiculo) : ?>
@@ -44,7 +44,7 @@ function aluno()
 
     $alunos = $bll->Select();
 ?>
-
+    <br>
     <select name="aluno" class="form-select" id="aluno">
         <option value="0">Escolher aluno</option>
         <?php foreach ($alunos as $aluno) : ?>
