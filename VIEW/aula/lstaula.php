@@ -1,5 +1,5 @@
 <?php
-
+//sou gay
 use BLL\bllAula;
 
 include_once '../../BLL/bllAula.php';
@@ -74,8 +74,8 @@ $bll = new \BLL\bllAula();
             <td><?php echo $aula->getNomeAluno(); ?></td>
             <td><?php echo $aula->getDataF(); ?></td>
             <td>
-              <a onclick="JavaScript:location.href='addAluno.php?id='+(<?php echo $aula->getId(); ?>)" class="link-dark"><i class="fa-solid fa-plus fs-5 me-3"></i></a>
-              <a onclick="JavaScript:location.href='edtAluno.php?id='+(<?php echo $aula->getId(); ?>)" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+              <a onclick="JavaScript:location.href='addAula.php?id='+(<?php echo $aula->getId(); ?>)" class="link-dark"><i class="fa-solid fa-plus fs-5 me-3"></i></a>
+              <a onclick="JavaScript:location.href='edtAula.php?id='+(<?php echo $aula->getId(); ?>)" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
               <a onclick="JavaScript:remover(<?php echo $aula->getId(); ?>)" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
             </td>
           </tr>

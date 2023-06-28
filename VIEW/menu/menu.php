@@ -20,6 +20,7 @@
                         <li><a href="../curso/lstCurso.php">Categoria</a></li>
                         <li><a href="../instrutor/lstInstrutor.php">Instrutor</a></li>
                         <li><a href="../veiculo/lstVeiculo.php">Veículo</a></li>
+                        <li><a href="../aula/lstAula.php">Agendamentos</a></li> 
                     </ul>
                 </nav>
             </div>

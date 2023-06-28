@@ -37,6 +37,7 @@ function nav()
                             <li><a class="dropdown-item" href="../curso/lstCurso.php">Categoria</a></li>
                             <li><a class="dropdown-item" href="../veiculo/lstVeiculo.php">Veiculo</a></li>
                             <li><a class="dropdown-item" href="../aluno/lstAluno.php">Aluno</a></li>
+                            <li><a class="dropdown-item" href="../aula/lstAula.php">Agendamentos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
