@@ -8,5 +8,4 @@
     $bll->Delete($id);
 
     header("location: lstaluno.php");
-
 ?>
